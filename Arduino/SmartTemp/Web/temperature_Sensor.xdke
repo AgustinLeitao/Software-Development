@@ -1,0 +1,248 @@
+{
+  "project": {
+    "projectSettingsVersion": "2.0.0",
+    "initialAutoPluginCount": 0,
+    "currentBuildConfiguration": null,
+    "projectFiles": {},
+    "projectDirectories": {}
+  },
+  "iot-tab": {
+    "fileStatus": {
+      "icon.png": {
+        "previousModTime": 1465066016000,
+        "modified": 1465066016000,
+        "seen": true,
+        "name": "icon.png"
+      },
+      "main.js": {
+        "previousModTime": 1467669778643,
+        "modified": 1467669778643,
+        "seen": true,
+        "name": "main.js"
+      },
+      "package.json": {
+        "previousModTime": 1465863862214,
+        "modified": 1465863862214,
+        "seen": true,
+        "name": "package.json"
+      },
+      "README.md": {
+        "previousModTime": 1465066016000,
+        "modified": 1465066016000,
+        "seen": true,
+        "name": "README.md"
+      },
+      "temperature_Sensor.xdk": {
+        "previousModTime": 1465066016000,
+        "modified": 1465066016000,
+        "seen": true,
+        "name": "temperature_Sensor.xdk"
+      },
+      "temperature_Sensor.xdke": {
+        "previousModTime": 1467681540357,
+        "modified": 1467681540357,
+        "seen": true,
+        "name": "temperature_Sensor.xdke"
+      },
+      "Thumbs.db": {
+        "previousModTime": 1465511320000,
+        "modified": 1465511320000,
+        "seen": true,
+        "name": "Thumbs.db"
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1465066016000,
+        "modified": 1465066016000,
+        "seen": true,
+        "name": "xdk/project-info.json"
+      },
+      "lcd.js": {
+        "previousModTime": 1465258900000,
+        "modified": 1465258900000,
+        "seen": true,
+        "name": "lcd.js"
+      },
+      "index.html": {
+        "previousModTime": 1465518358406,
+        "modified": 1465518358406,
+        "seen": true,
+        "name": "index.html"
+      },
+      "indexViejo.html": {
+        "previousModTime": 1465519105033,
+        "modified": 1465519105033,
+        "seen": true,
+        "name": "indexViejo.html"
+      },
+      "web/add.php": {
+        "previousModTime": 1465517652000,
+        "modified": 1465517652000,
+        "seen": true,
+        "name": "web/add.php"
+      },
+      "web/connect.php": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/connect.php"
+      },
+      "web/database.sql": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/database.sql"
+      },
+      "web/index.html": {
+        "previousModTime": 1466272464134,
+        "modified": 1466272464134,
+        "seen": true,
+        "name": "web/index.html"
+      },
+      "web/loadTemp.php": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/loadTemp.php"
+      },
+      "web/set.php": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/set.php"
+      },
+      "web/temperatura.dat": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/temperatura.dat"
+      },
+      "web/css/style.css": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/css/style.css"
+      },
+      "web/js/jquery.vide.js": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/js/jquery.vide.js"
+      },
+      "web/js/script.js": {
+        "previousModTime": 1467679594850,
+        "modified": 1467679594850,
+        "seen": true,
+        "name": "web/js/script.js"
+      },
+      "web/media/fire.jpg": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/fire.jpg"
+      },
+      "web/media/fire.mp4": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/fire.mp4"
+      },
+      "web/media/fire.ogv": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/fire.ogv"
+      },
+      "web/media/fire.webm": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/fire.webm"
+      },
+      "web/media/Thumbs.db": {
+        "previousModTime": 1465517762000,
+        "modified": 1465517762000,
+        "seen": true,
+        "name": "web/media/Thumbs.db"
+      },
+      "web/media/winter.jpg": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/winter.jpg"
+      },
+      "web/media/winter.mp4": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/winter.mp4"
+      },
+      "web/media/winter.ogv": {
+        "previousModTime": 1465517656000,
+        "modified": 1465517656000,
+        "seen": true,
+        "name": "web/media/winter.ogv"
+      },
+      "web/media/winter.webm": {
+        "previousModTime": 1465517656000,
+        "modified": 1465517656000,
+        "seen": true,
+        "name": "web/media/winter.webm"
+      },
+      "web/media/fire.jpeg": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/fire.jpeg"
+      },
+      "web/media/winter.jpeg": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/winter.jpeg"
+      },
+      "web/js/jquery.vide.min.js": {
+        "previousModTime": 1452748234000,
+        "modified": 1452748234000,
+        "seen": true,
+        "name": "web/js/jquery.vide.min.js"
+      },
+      "web/media/fire.gif": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/fire.gif"
+      },
+      "web/media/fire.png": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/fire.png"
+      },
+      "web/media/winter.gif": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/winter.gif"
+      },
+      "web/media/winter.png": {
+        "previousModTime": 1465517654000,
+        "modified": 1465517654000,
+        "seen": true,
+        "name": "web/media/winter.png"
+      },
+      "led.js": {
+        "previousModTime": 1467487073659,
+        "modified": 1467487073659,
+        "seen": true,
+        "name": "led.js"
+      },
+      "sensor.js": {
+        "previousModTime": 1467681052724,
+        "modified": 1467681052724,
+        "seen": true,
+        "name": "sensor.js"
+      }
+    },
+    "boardFileStatus": {}
+  }
+}

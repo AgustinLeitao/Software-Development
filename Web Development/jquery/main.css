@@ -1,0 +1,19 @@
+.background {
+    font-size: 30px;
+    background-color: aqua;
+    text-align: center;
+}
+
+.link {
+    background-color: rgb(110, 218, 218);
+    text-decoration: none;
+}
+
+.specialLink {
+    background-color: rgb(197, 224, 162);
+    text-decoration: none;
+}
+
+.linkAux {
+    background-color: rgb(218, 110, 142);
+}

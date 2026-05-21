@@ -1,0 +1,25 @@
+{
+  "name": "react-server-side-rendering",
+  "version": "1.0.0",
+  "description": "Server side rendering example",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node server/index.js",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/node": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

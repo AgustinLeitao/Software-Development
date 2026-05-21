@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-basics",
+  "version": "1.0.0",
+  "description": "nodejs practice",
+  "main": "express.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.0",
+    "moment": "^2.24.0",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "ejs": "^3.0.2",
+    "pug": "^2.0.4",
+    "uuid": "^7.0.2"
+  },
+  "scripts": {
+    "nodemon": "nodemon express.js"
+  },
+  "author": "Agustin Leitao",
+  "license": "ISC"
+}

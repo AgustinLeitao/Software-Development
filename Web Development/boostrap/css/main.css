@@ -1,0 +1,25 @@
+body {
+    font-family: 'Baloo Bhai', cursive;
+}
+
+.height {
+    min-height: 100vh;
+}
+
+.height-80 {
+    min-height: 80vh;
+}
+
+.title-underline {
+    width: 100px;
+    height: 5px;
+    margin: 0 auto;
+}
+
+.about-picture, #progress{
+    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(../images/about-bcg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

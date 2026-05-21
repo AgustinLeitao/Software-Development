@@ -1,0 +1,63 @@
+$primary-color: #4f46e5;
+$secondary-color: #4338ca;
+$text-color: white;
+$hover-bg-color: #3730a3;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  height: 80px;
+  background-color: $primary-color;
+  padding: 0 20px;
+  border-bottom: 2px solid $secondary-color;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.logoText {
+  display: none;
+  color: $text-color;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 8px;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.linkGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.link {
+  color: $text-color;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: $hover-bg-color;
+    color: $text-color;
+  }
+}
+
+.activeLink {
+  background-color: black;
+  color: $text-color;
+  border-radius: 4px;
+  padding: 8px 12px;
+}

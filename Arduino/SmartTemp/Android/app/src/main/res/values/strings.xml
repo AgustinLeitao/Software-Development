@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">SmartTemp</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="title_activity_main">SmartTemp</string>
+    <string name="action_settings">Configuraciones</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_shake">ShakeActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_register">Registro</string>
+    <string name="title_activity_main_tabbed">SmartTemp</string>
+    <string name="title_activity_settings">Configuracion</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_acerda_de">Acerca de</string>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_configurar_servidor">Configurar Servidor</string>
+
+    <string name="pref_title_ip_puerto">Ip %amp Puerto</string>
+    <string name="pref_title_ip">Direccion IP</string>
+    <string name="pref_default_ip">127.0.0.1</string>
+    <string name="pref_title_puerto">Puerto</string>
+    <string name="pref_default_puerto">5000</string>
+
+    <string name="pref_title_frecuencia_sincronizacion">Frecuencia sincronizacion</string>
+    <string-array name="pref_titles_frecuencia_sincronizacion">
+        <item>5 minutos</item>
+        <item>10 minutos</item>
+        <item>20 minutos</item>
+        <item>30 minutos</item>
+        <item>1 hora</item>
+        <item>6 hora</item>
+        <item>Nunca</item>
+    </string-array>
+    <string-array name="pref_values_frecuencia_sincronizacion">
+        <item>1</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notificaciones">Notificaciones</string>
+
+    <string name="pref_title_alertas">Alertas</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silencio">Silencio</string>
+    <string name="pref_title_vibracion">Vibracion</string>
+    <string name="title_activity_acerca_de">AcercaDeActivity</string>
+</resources>

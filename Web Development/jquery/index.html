@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <div id="main"></div>
+    <div class="special"></div>
+    <div class="parent">
+      <span>span</span>
+    </div>
+
+    <div class="parent">
+      <h1>h1</h1>
+      <h2>h2</h2>
+      <h3>h3</h3>
+      <h4>h4</h4>
+    </div>
+
+    <a href="#">test link</a>
+    <a href="">test link</a>
+    <a href="google.com">test link</a>
+
+    <ul class="first">
+      <li class="test1">item1</li>
+      <li class="test2">item2</li>
+      <li class="test3">item3</li>
+      <li class="test4">item4</li>
+    </ul>
+
+    <div id="append">Append</div>
+    <div id="appendTo">AppendTo</div>
+
+    <div class="container">
+      <div class="inner">Hello</div>
+      <div class="inner">Goodbye</div>
+    </div>
+
+    <input type="text" id="name" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        let result = $("div, span, p").length;
+        console.log($("div").get()); // Retrive dom elements.
+        console.log($("div")); // Retrieve jquery object with the dom elements.
+        $("#main").html("div main id");
+        $(".special").hide();
+        $(".parent span").css("color", "red");
+        $(".parent h1+h2").css("color", "green"); // Selects a h2 inmediatedly after h1.
+        $("div[class]").addClass("background"); // Selects all divs having a class.
+        $('a[href="#"]').addClass("link"); // Selects a element with href equals to #.
+        $('a[href!="#"]').addClass("specialLink"); // Selects a element with href not equals to #.
+        $('a[href^="#"]').removeClass("specialLink"); // Selects a element with href beginning with #.
+        $('a[href$=".com"]').toggleClass("specialLink"); // Selects a element with href ending with #.
+        $(".first li:first").css("font-size", "40px"); // Selects the first li element which is inside a list with a class called first.
+        $(".first li:last").css("font-size", "40px"); // Selects the last li element which is inside a list with a class called first.
+        $(".first li:even").hasClass("link")
+          ? console.log(true)
+          : console.log(false); // Selects the even li element which is inside a list with a class called first.
+        $(".first li:odd").css("color", "green"); // Selects the odd li element which is inside a list with a class called first.
+        $(".first li:eq(2)").click(() => {
+          $(this).toggleClass("specialLink");
+        }); // Selects second li element.
+        $(".first li:lt(2)").css("color", "green"); // Selects li elements whose child number is less than 2.
+        $("div")[0].append($("#append"));
+        $(".inner").wrapInner("<div class='new'></div>");
+        $("li").each(function(index, item) {
+          console.log(this);
+          console.log($(this));
+          console.log($(item).text());
+        });
+
+        let classNames = [];
+
+        $("li[class]").each(function(index) {
+          classNames[index] = $(this).attr("class");
+          $(this).attr({ class: "linkAux" });
+        });
+
+        console.log(classNames);
+
+        $("#append").append("<div>appended div </div>");
+        $("#appendTo").prepend("<div>prepended div </div>");
+
+        $("<div>appended div </div>").appendTo($("#append"));
+        $("<div>prepended div </div>").appendTo($("#appendTo"));
+
+        $("#name").change(function() {
+          console.log(true);
+        }); // Triggers change event when clicking away from the input.
+        $("#name").hover(function() {
+          console.log(true);
+        }); // Triggers change event when clicking away from the input.
+        $("#name").mouseenter(function() {
+          console.log(true);
+        }); // Triggers change event when clicking away from the input.
+        $("#name").mouseleave(function() {
+          console.log(false);
+        }); // Triggers change event when clicking away from the input.
+        $("#name").on("click mouseenter", function() {
+          console.log(false);
+        }); // "on" allows to set several events at once.
+        $("#name").off("mouseenter"); // off removes event handlers.
+        if ($("#name").is(":hidden")) {
+          $("#name").show("fast"); // Fast or slow animation.
+          $("#name").toggle(2000); // It shows or hide the element after the specified time.
+          $("#name").fadeToggle(2000); // It shows or hide the element with a fade animation.
+          $("#name").fadeTo(2000, 0.3); // It shows or hide the element with a fade animation and the specified opacity.
+        }
+
+        $("#name").animate(
+          {
+            fontSize: "40px",
+            marginLeft: "-100px"
+          },
+          5000
+        );
+
+        $.ajax({
+          url: "https://api.stripe.com/v1/customers",
+          dataType: "json",
+          method: "GET",
+          headers: { Authorization: "Bearer sk_test_4eC39HqLyjWDarjtT1zdp7dc" },
+          success: success,
+          error: error,
+          complete: setContent
+        });
+
+        var dfd = $.ajax({
+          url: "https://api.stripe.com/v1/customers",
+          dataType: "json",
+          method: "GET",
+          headers: { Authorization: "Bearer sk_test_4eC39HqLyjWDarjtT1zdp7dc" },
+          success: success,
+          error: error,
+          complete: setContent
+        });
+
+        dfd.done(function() {
+          console.log("successful request");
+        });
+
+        dfd.fail(function() {
+          console.log("failed request");
+        });
+
+        dfd.then(
+          function() {
+            console.log("successful request");
+          },
+          function() {
+            console.log("failed request");
+          }
+        );
+
+        function setContent(data) {
+          $("#name").html(data); // $('#name').load(url);
+        }
+
+        function success(data, xhr, status) {
+          console.log(data);
+          console.log(xhr);
+          console.log(status);
+        }
+
+        function error(xhr) {
+          console.log(xhr);
+        }
+
+        // Deferred.
+
+        $.dfdo = function() {
+          var dfd = $.Deferred(); // Promise is a read-only version of the deferred object.
+
+          var randomNumber = Math.floor(Math.random() * 10 + 1); // Returns a number between 1 and 10.
+
+          if (randomNumber > 5) dfd.resolve(randomNumber);
+          else dfd.reject(randomNumber);
+
+          return dfd.promise();
+        };
+
+        $.dfdo().then(
+          function(randomNumber) {
+            console.log("deferred object was resolved");
+          },
+          function(randomNumber) {
+            console.log("deferred object rejected");
+          }
+        );
+
+        // When promises method
+
+        var ajax1 = $.ajax({
+          url: "https://api.stripe.com/v1/customers",
+          dataType: "json",
+          method: "GET",
+          headers: { Authorization: "Bearer sk_test_4eC39HqLyjWDarjtT1zdp7dc" },
+          success: success,
+          error: error,
+          complete: setContent
+        });
+
+        var ajax2 = $.ajax({
+          url: "https://api.stripe.com/v1/customers",
+          dataType: "json",
+          method: "GET",
+          headers: { Authorization: "Bearer sk_test_4eC39HqLyjWDarjtT1zdp7dc" },
+          success: success,
+          error: error,
+          complete: setContent
+        });
+
+        $.when(ajax1, ajax2).then(
+          function() {console.log('request completed')},
+          function() {console.log('request failed')});        
+        });   
+           
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  ui:
+    image: ${DOCKER_REGISTRY-}ui
+    environment: 
+      - "serviceUrl=http://backservice"
+    build:
+      context: .
+      dockerfile: "TripTracker.UI/Dockerfile"  
+    ports:
+      - "5004:80"  
+    links: 
+      - "backservice"
+  backservice:
+    image: ${DOCKER_REGISTRY-}backservice
+    build:
+      context: .
+      dockerfile: "TripTracker.BackService/Dockerfile"  
+    ports:
+      - "5003:80"  
+  db:
+    image: "microsoft/mssql-server-linux"

@@ -1,0 +1,22 @@
+VAR
+[integer,float,string,string] : [var1,var2,var3,var4]  
+ENDVAR
+if (2+3)*5 != 5 and var3 >= "algo" 
+then
+   [var1,var2,var3] := [2+3,.2/2.,"algo"++"algo"]  
+else
+   var2 := var2+5.5  
+   while not var3 <= "hola" 
+   do
+      while var1 in [(2+3)*5,9/3]     
+      do
+         WRITE "hola"    
+	 var1 := var1+3 
+         READ var1
+      endwhile
+      var3 := var3 ++ "hola"
+   endwhile
+endif     
+WRITE "HOLA"
+WRITE var2    
+var4 := "algo" ++ "algo"

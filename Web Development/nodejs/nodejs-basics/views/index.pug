@@ -1,0 +1,15 @@
+extends ./layouts/main.pug
+
+block content
+    h1.text-center.mb-3 Members
+    form.mb-4(action="/api/members" method="POST")
+        div.form-group
+            label(for="name") Name
+            input.form-control(type="text" name="name")
+        div.form-group
+            label(for="email") Email
+            input.form-control(type="text" name="email")
+        input.btn.btn-primary.btn-block.text-capitalize(type="submit" value="add member")
+    ul.list-group
+        each member in members
+            li.list-group-item #{member.name}: #{member.email}

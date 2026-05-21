@@ -1,0 +1,19 @@
+FROM microsoft/aspnetcore:2.0-stretch AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM microsoft/aspnetcore-build:2.0-stretch AS build
+WORKDIR /src
+COPY ["TripTracker.BackService/TripTracker.BackService.csproj", "TripTracker.BackService/"]
+RUN dotnet restore "TripTracker.BackService/TripTracker.BackService.csproj"
+COPY . .
+WORKDIR "/src/TripTracker.BackService"
+RUN dotnet build "TripTracker.BackService.csproj" -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish "TripTracker.BackService.csproj" -c Release -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "TripTracker.BackService.dll"]

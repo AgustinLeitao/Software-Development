@@ -1,0 +1,60 @@
+@import './resets';
+@import './variables';
+
+@function weight($weight-name) {
+    @return map-get($font-weights, $weight-name);
+}
+
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background: lighten($primary-color, 100%); 
+        color: darken($secondary-color, 100%);  
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+body {
+    background: $primary-color;
+}
+
+.main {
+    @include flexCenter(row);
+    width: 80% - 40%; // The operators have to be of the same type, otherwise it is neccesary to use calc().
+    margin: 0 auto;
+
+    // Interpolation - 
+    #{&}__paragraph1 {
+        font-weight: weight(bold);
+        &:hover {
+            color: #771414;
+        }
+    }
+
+    #{&}__paragraph2 {
+        @extend .main__paragraph1;
+
+        &:hover {
+            color: #d8d51d;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.light {
+    @include theme($light-theme: true);
+}
