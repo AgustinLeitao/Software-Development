@@ -1,0 +1,340 @@
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+IDID;NOMBRE;CUIT;DIRECCION;TELEFONONOMBREID;NOMBRE;CUIT;DIRECCION;TELEFONOCUITID;NOMBRE;CUIT;DIRECCION;TELEFONODIRECCIONID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOERROR
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOTELEFONOEl registro tiene -5campo/s de mas
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo ID debe contener unicamente numeros entre 0 y 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+ID;NOMBRE;CUIT;DIRECCION;TELEFONOID;NOMBRE;CUIT;DIRECCION;TELEFONOEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+1;cliente 1;30-1829224-3;Direccion 1;8184251381842513El registro tiene 81842508campo/s de mas
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+1;cliente 1;30-1829224-3;Direccion 1;818425131;cliente 1;30-1829224-3;Direccion 1;81842513El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de máscampo de másEl registro tiene -5campo/s de mas
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de más2;cliente 4;30-7357750-8;Direccion 4;96000529;campo de másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+3;cliente 2;30-1431077-4;Direccion 2;7680913776809137El registro tiene 76809132campo/s de mas
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+3;cliente 2;30-1431077-4;Direccion 2;768091373;cliente 2;30-1431077-4;Direccion 2;76809137El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másdos campos másEl registro tiene -5campo/s de mas
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos más4;cliente 8;30-4989962-2;Direccion 8;27790434;este tiene;dos campos másEl campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
+5;cliente 6;30-3137509-8;Direccion 6;66958798;Al registro le faltan 5campo/s
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo CUIT debe tener el formato NN-NNNNNNNN-N donde N representa un numero de 0 a 9
+5;cliente 6;30-3137509-8;Direccion 6;66958798;5;cliente 6;30-3137509-8;Direccion 6;66958798;El campo TELEFONO debe contener unicamente numeros entre 0 y 9. Debe tener 8 numeros
