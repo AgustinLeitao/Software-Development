@@ -1,12 +1,8 @@
-# Software-Development
-
-Monorepo containing multiple small projects, experiments and demos across Arduino, mobile, web, compiler exercises and game development.
-
 ## Overview
 
-This repository is a collection of personal/sample projects organized by technology and maintained as a hands-on learning playground to explore and practice these tools and frameworks.
+This repository is a collection of personal/sample projects organized by technology.
 
-## Quick start / common tasks
+## Quick start
 
 - Clone the repo:
 
