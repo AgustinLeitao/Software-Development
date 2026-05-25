@@ -1,0 +1,111 @@
+trigger:
+  branches:
+    include:
+      - dev
+      - qa
+      - main
+
+pr:
+  branches:
+    include:
+      - dev
+      - qa
+      - main
+
+variables:
+  azureSubscription: 'AzureServiceConnection'
+  resourceGroup: 'todoapp-rg'
+  acrName: 'todoappacr'
+  aksClusterName: 'todoapp-aks'
+  imageTag: '$(Build.BuildId)'
+  environment: "$[eq(variables['Build.SourceBranchName'], 'main') ? 'prod' : eq(variables['Build.SourceBranchName'], 'qa') ? 'qa' : 'dev']"
+
+stages:
+  - stage: Build
+    displayName: Build images
+    jobs:
+      - job: Build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+          - task: Bash@3
+            displayName: Install backend dependencies
+            inputs:
+              targetType: 'inline'
+              script: |
+                cd server
+                npm install
+          - task: Bash@3
+            displayName: Build backend
+            inputs:
+              targetType: 'inline'
+              script: |
+                cd server
+                npm run build
+          - task: Bash@3
+            displayName: Install frontend dependencies
+            inputs:
+              targetType: 'inline'
+              script: |
+                cd client
+                npm install
+          - task: Bash@3
+            displayName: Build frontend
+            inputs:
+              targetType: 'inline'
+              script: |
+                cd client
+                npm run build
+
+  - stage: Push
+    displayName: Push container images
+    dependsOn: Build
+    jobs:
+      - job: Push
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: '$(azureSubscription)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                ACR_LOGIN_SERVER=$(az acr show --name $(acrName) --resource-group $(resourceGroup) --query loginServer -o tsv)
+                echo "ACR_LOGIN_SERVER=$ACR_LOGIN_SERVER"
+                docker build -f server/Dockerfile -t ${ACR_LOGIN_SERVER}/todo-app-server:$(imageTag) server
+                docker build -f client/Dockerfile -t ${ACR_LOGIN_SERVER}/todo-app-client:$(imageTag) client
+                az acr login --name $(acrName)
+                docker push ${ACR_LOGIN_SERVER}/todo-app-server:$(imageTag)
+                docker push ${ACR_LOGIN_SERVER}/todo-app-client:$(imageTag)
+
+  - stage: Deploy
+    displayName: Deploy to AKS
+    dependsOn: Push
+    jobs:
+      - deployment: DeployToAKS
+        displayName: Deploy to $(environment)
+        environment: $(environment)
+        pool:
+          vmImage: ubuntu-latest
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureCLI@2
+                  inputs:
+                    azureSubscription: '$(azureSubscription)'
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      ACR_LOGIN_SERVER=$(az acr show --name $(acrName) --resource-group $(resourceGroup) --query loginServer -o tsv)
+                      az aks get-credentials --resource-group $(resourceGroup) --name $(aksClusterName) --overwrite-existing
+                      helm upgrade --install todo-app charts/todo-app \
+                        --set backend.image.repository=${ACR_LOGIN_SERVER}/todo-app-server \
+                        --set backend.image.tag=$(imageTag) \
+                        --set frontend.image.repository=${ACR_LOGIN_SERVER}/todo-app-client \
+                        --set frontend.image.tag=$(imageTag) \
+                        --values charts/todo-app/values-$(environment).yaml

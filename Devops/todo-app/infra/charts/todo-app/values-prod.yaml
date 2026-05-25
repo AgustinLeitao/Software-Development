@@ -1,0 +1,24 @@
+global:
+  environment: prod
+
+backend:
+  image:
+    tag: prod
+  replicaCount: 3
+
+frontend:
+  image:
+    tag: prod
+  replicaCount: 2
+
+ingress:
+  enabled: true
+  hosts:
+    - host: todo-app.prod.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - todo-app.prod.example.com
+      secretName: todo-app-tls

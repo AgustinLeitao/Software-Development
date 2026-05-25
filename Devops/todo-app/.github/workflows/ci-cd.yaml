@@ -1,0 +1,120 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+      - qa
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target deployment environment'
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - qa
+          - prod
+
+env:
+  ACR_NAME: ${{ secrets.ACR_NAME }}
+  RESOURCE_GROUP: ${{ secrets.ACR_RESOURCE_GROUP }}
+  AKS_CLUSTER: ${{ secrets.AKS_CLUSTER }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      image-tag: ${{ steps.set-tag.outputs.image-tag }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set image tag
+        id: set-tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "IMAGE_TAG=${{ github.event.inputs.environment }}-$(date +%s)" >> $GITHUB_OUTPUT
+          else
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            echo "IMAGE_TAG=${BRANCH_NAME}-$(date +%s)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up Node.js for backend
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Install backend dependencies
+        working-directory: server
+        run: npm install
+      - name: Build backend
+        working-directory: server
+        run: npm run build
+
+      - name: Set up Node.js for frontend
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Install frontend dependencies
+        working-directory: client
+        run: npm install
+      - name: Build frontend
+        working-directory: client
+        run: npm run build
+
+  push-and-deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.environment || github.ref_name == 'main' && 'prod' || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get ACR login server
+        id: acr
+        run: |
+          ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer -o tsv)
+          echo "ACR_LOGIN_SERVER=$ACR_LOGIN_SERVER" >> $GITHUB_OUTPUT
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./server
+          push: true
+          tags: ${{ steps.acr.outputs.ACR_LOGIN_SERVER }}/todo-app-server:${{ needs.build.outputs.image-tag }}
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./client
+          push: true
+          tags: ${{ steps.acr.outputs.ACR_LOGIN_SERVER }}/todo-app-client:${{ needs.build.outputs.image-tag }}
+
+      - name: Get AKS credentials
+        run: |
+          az aks get-credentials --resource-group $RESOURCE_GROUP --name $AKS_CLUSTER --overwrite-existing
+
+      - name: Deploy Helm chart
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            ENVIRONMENT=${{ github.event.inputs.environment }}
+          else
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            if [ "$BRANCH_NAME" = "main" ]; then
+              ENVIRONMENT=prod
+            else
+              ENVIRONMENT=$BRANCH_NAME
+            fi
+          fi
+          HELM_VALUES=charts/todo-app/values-${ENVIRONMENT}.yaml
+          helm upgrade --install todo-app charts/todo-app \
+            --set backend.image.repository=${{ steps.acr.outputs.ACR_LOGIN_SERVER }}/todo-app-server \
+            --set backend.image.tag=${{ needs.build.outputs.image-tag }} \
+            --set frontend.image.repository=${{ steps.acr.outputs.ACR_LOGIN_SERVER }}/todo-app-client \
+            --set frontend.image.tag=${{ needs.build.outputs.image-tag }} \
+            --values $HELM_VALUES

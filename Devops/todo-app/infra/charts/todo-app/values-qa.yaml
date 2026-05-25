@@ -1,0 +1,15 @@
+global:
+  environment: qa
+
+backend:
+  image:
+    tag: qa
+  replicaCount: 2
+
+frontend:
+  image:
+    tag: qa
+  replicaCount: 2
+
+ingress:
+  enabled: false
