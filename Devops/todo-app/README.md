@@ -59,9 +59,3 @@ The Azure Bicep templates are in `infra/main.bicep` with environment files in `i
 
 - GitHub Actions pipeline: `.github/workflows/ci-cd.yml`
 - Azure Pipelines: `azure-pipelines.yml`
-
-## Recommended next steps
-
-- Populate Azure service connections and secrets in GitHub
-- Validate the Helm chart with `helm lint` and `helm template`
-- Use `az deployment group create` with the appropriate Bicep environment parameters
