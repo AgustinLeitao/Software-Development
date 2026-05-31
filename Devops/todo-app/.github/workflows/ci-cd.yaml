@@ -81,6 +81,10 @@ jobs:
           ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer -o tsv)
           echo "ACR_LOGIN_SERVER=$ACR_LOGIN_SERVER" >> $GITHUB_OUTPUT
 
+      - name: Log in to Azure Container Registry
+        run: |
+          az acr login --name $ACR_NAME
+
       - name: Build and push backend image
         uses: docker/build-push-action@v5
         with:
@@ -111,8 +115,8 @@ jobs:
               ENVIRONMENT=$BRANCH_NAME
             fi
           fi
-          HELM_VALUES=charts/todo-app/values-${ENVIRONMENT}.yaml
-          helm upgrade --install todo-app charts/todo-app \
+          HELM_VALUES=infra/charts/todo-app/values-${ENVIRONMENT}.yaml
+          helm upgrade --install todo-app infra/charts/todo-app \
             --set backend.image.repository=${{ steps.acr.outputs.ACR_LOGIN_SERVER }}/todo-app-server \
             --set backend.image.tag=${{ needs.build.outputs.image-tag }} \
             --set frontend.image.repository=${{ steps.acr.outputs.ACR_LOGIN_SERVER }}/todo-app-client \

@@ -22,7 +22,9 @@ spec:
           image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
-            - containerPort: 4173
+            - containerPort: 80
+          resources:
+            {{- toYaml .Values.frontend.resources | nindent 12 }}
           env:
             - name: VITE_API_BASE_URL
               value: "http://{{ include "todo-app.fullname" . }}-backend:{{ .Values.backend.service.port }}"

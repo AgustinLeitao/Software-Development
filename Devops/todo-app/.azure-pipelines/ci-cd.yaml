@@ -103,9 +103,9 @@ stages:
                     inlineScript: |
                       ACR_LOGIN_SERVER=$(az acr show --name $(acrName) --resource-group $(resourceGroup) --query loginServer -o tsv)
                       az aks get-credentials --resource-group $(resourceGroup) --name $(aksClusterName) --overwrite-existing
-                      helm upgrade --install todo-app charts/todo-app \
+                      helm upgrade --install todo-app infra/charts/todo-app \
                         --set backend.image.repository=${ACR_LOGIN_SERVER}/todo-app-server \
                         --set backend.image.tag=$(imageTag) \
                         --set frontend.image.repository=${ACR_LOGIN_SERVER}/todo-app-client \
                         --set frontend.image.tag=$(imageTag) \
-                        --values charts/todo-app/values-$(environment).yaml
+                        --values infra/charts/todo-app/values-$(environment).yaml

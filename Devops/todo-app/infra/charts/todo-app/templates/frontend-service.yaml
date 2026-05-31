@@ -12,6 +12,6 @@ spec:
     component: frontend
   ports:
     - port: {{ .Values.frontend.service.port }}
-      targetPort: 4173
+      targetPort: 80
       protocol: TCP
       name: http

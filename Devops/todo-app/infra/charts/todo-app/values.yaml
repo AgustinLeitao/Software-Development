@@ -9,7 +9,13 @@ backend:
     pullPolicy: IfNotPresent
   service:
     port: 4000
-  resources: {}
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
   env:
     corsOrigin: "*"
 
@@ -21,7 +27,13 @@ frontend:
     pullPolicy: IfNotPresent
   service:
     port: 80
-  resources: {}
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
 
 ingress:
   enabled: false

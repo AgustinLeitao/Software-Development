@@ -23,6 +23,8 @@ spec:
           imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
+          resources:
+            {{- toYaml .Values.backend.resources | nindent 12 }}
           env:
             - name: NODE_ENV
               value: "{{ .Values.global.environment }}"
