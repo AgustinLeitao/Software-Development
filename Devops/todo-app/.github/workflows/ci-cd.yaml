@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Target deployment environment'
+        description: "Target deployment environment"
         required: true
         default: dev
         type: choice
@@ -22,6 +22,7 @@ env:
   ACR_NAME: ${{ secrets.ACR_NAME }}
   RESOURCE_GROUP: ${{ secrets.ACR_RESOURCE_GROUP }}
   AKS_CLUSTER: ${{ secrets.AKS_CLUSTER }}
+  DEPLOYMENT_LOCATION: eastus
 
 jobs:
   infra:
@@ -36,10 +37,10 @@ jobs:
 
       - name: Deploy infra with Bicep
         run: |
-          az deployment group create \
-            --resource-group ${{ secrets.ACR_RESOURCE_GROUP }} \
-            --template-file infra/main.bicep \
-            --parameters infra/${{ github.event.inputs.environment }}.parameters.json
+          az deployment subscription create \
+            --location ${{ env.DEPLOYMENT_LOCATION }} \
+            --template-file infra/bicep/main.bicep \
+            --parameters infra/bicep/parameters/${{ github.event.inputs.environment }}.bicepparam
   build-push-deploy:
     runs-on: ubuntu-latest
     needs: infra
