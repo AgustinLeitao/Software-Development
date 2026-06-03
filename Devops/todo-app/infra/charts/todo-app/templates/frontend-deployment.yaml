@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "todo-app.fullname" . }}-frontend
+  name: '{{ include "todo-app.fullname" . }}-frontend'
   labels:
     app: {{ include "todo-app.fullname" . }}
     component: frontend
@@ -22,9 +22,10 @@ spec:
           image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
-            - containerPort: 80
+            - name: http
+              containerPort: 80
           resources:
-            {{- toYaml .Values.frontend.resources | nindent 12 }}
+            {{ toYaml .Values.frontend.resources | nindent 12 }}
           env:
             - name: VITE_API_BASE_URL
-              value: "http://{{ include "todo-app.fullname" . }}-backend:{{ .Values.backend.service.port }}"
+              value: 'http://{{ include "todo-app.fullname" . }}-backend:{{ .Values.backend.service.port }}'
