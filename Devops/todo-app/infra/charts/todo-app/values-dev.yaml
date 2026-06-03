@@ -2,13 +2,9 @@ global:
   environment: dev
 
 backend:
-  image:
-    tag: dev
   replicaCount: 1
 
 frontend:
-  image:
-    tag: dev
   replicaCount: 1
 
 ingress:

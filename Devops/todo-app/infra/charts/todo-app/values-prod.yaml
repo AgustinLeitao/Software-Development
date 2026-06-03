@@ -2,13 +2,9 @@ global:
   environment: prod
 
 backend:
-  image:
-    tag: prod
   replicaCount: 3
 
 frontend:
-  image:
-    tag: prod
   replicaCount: 2
 
 ingress:

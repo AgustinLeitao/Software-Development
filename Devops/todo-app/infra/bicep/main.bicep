@@ -29,3 +29,8 @@ module aksCluster './components/aks.bicep' = {
     acrName: acrName
   }
 }
+
+output acrLoginServer string = aksCluster.outputs.acrLoginServer
+output acrName string = aksCluster.outputs.acrName
+output resourceGroupName string = rg.name
+output aksClusterName string = aksCluster.outputs.aksClusterName
