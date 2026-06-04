@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       acr_name: ${{ steps.bicep-deploy.outputs.acr_name }}
+      acr_login_server: ${{ steps.bicep-deploy.outputs.acr_login_server }}
       resource_group: ${{ steps.bicep-deploy.outputs.resource_group }}
       aks_cluster: ${{ steps.bicep-deploy.outputs.aks_cluster }}
       environment: ${{ github.event.inputs.environment }}
@@ -34,11 +35,11 @@ jobs:
       - name: Deploy infra with Bicep
         id: bicep-deploy
         run: |
-          DEPLOYMENT_OUTPUT=$(az deployment subscription create \
+          DEPLOYMENT_OUTPUT=$(az deployment sub create \
             --location ${{ env.DEPLOYMENT_LOCATION }} \
             --template-file infra/bicep/main.bicep \
             --parameters infra/bicep/parameters/${{ github.event.inputs.environment }}.bicepparam \
-            --query '{acrLoginServer: outputs.acrLoginServer.value, acrName: outputs.acrName.value, resourceGroup: outputs.resourceGroupName.value, aksCluster: outputs.aksClusterName.value}' \
+            --query '{acrLoginServer: properties.outputs.acrLoginServer.value, acrName: properties.outputs.acrName.value, resourceGroup: properties.outputs.resourceGroupName.value, aksCluster: properties.outputs.aksClusterName.value}' \
             -o json)
           
           ACR_LOGIN_SERVER=$(echo $DEPLOYMENT_OUTPUT | jq -r '.acrLoginServer' 2>/dev/null)
@@ -56,13 +57,21 @@ jobs:
           echo "acr_name=$ACR_NAME" >> $GITHUB_OUTPUT
           echo "resource_group=$RESOURCE_GROUP" >> $GITHUB_OUTPUT
           echo "aks_cluster=$AKS_CLUSTER" >> $GITHUB_OUTPUT
-  build-push-deploy:
+
+  build-push:
     runs-on: ubuntu-latest
     needs: infra
-    environment: ${{ needs.infra.outputs.environment }}
+    outputs:
+      image_tag: ${{ steps.set-tag.outputs.image-tag }}
     steps:
       - uses: actions/checkout@v4
 
+      - name: Fix Docker Socket Permissions
+        run: |
+          if [ -S /var/run/docker.sock ]; then
+            sudo chmod 666 /var/run/docker.sock
+          fi
+          
       - name: Set image tag
         id: set-tag
         run: |
@@ -94,6 +103,18 @@ jobs:
           build-args: |
             VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [infra, build-push]
+    environment: ${{ needs.infra.outputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Get AKS credentials
         run: |
           az aks get-credentials --resource-group ${{ needs.infra.outputs.resource_group }} --name ${{ needs.infra.outputs.aks_cluster }} --overwrite-existing
@@ -107,7 +128,7 @@ jobs:
             --create-namespace \
             --set global.environment=$ENVIRONMENT \
             --set backend.image.repository=${{ needs.infra.outputs.acr_login_server }}/todo-app-server \
-            --set backend.image.tag=${{ steps.set-tag.outputs.image-tag }} \
+            --set backend.image.tag=${{ needs.build-push.outputs.image_tag }} \
             --set frontend.image.repository=${{ needs.infra.outputs.acr_login_server }}/todo-app-client \
-            --set frontend.image.tag=${{ steps.set-tag.outputs.image-tag }} \
+            --set frontend.image.tag=${{ needs.build-push.outputs.image_tag }} \
             --values $HELM_VALUES

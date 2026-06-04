@@ -17,6 +17,7 @@ node_modules/
 # IDE files
 .vscode/
 .DS_Store
+.todo
 
 # Logs
 logs
