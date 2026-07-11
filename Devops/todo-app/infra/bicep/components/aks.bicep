@@ -13,7 +13,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2025-11-01' = {
     name: acrSku
   }
   properties: {
-    adminUserEnabled: true
+    adminUserEnabled: false
   }
 }
 
@@ -35,6 +35,16 @@ resource aks 'Microsoft.ContainerService/managedClusters@2026-02-01' = {
       }
     ]
     enableRBAC: true
+  }
+}
+
+resource acrPullRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(acr.id, aks.id, 'AcrPull')
+  scope: acr
+  properties: {
+    principalId: aks.properties.identityProfile.kubeletidentity.objectId
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')
+    principalType: 'ServicePrincipal'
   }
 }
 
