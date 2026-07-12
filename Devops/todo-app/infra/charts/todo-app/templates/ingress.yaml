@@ -20,21 +20,21 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: '{{ include "todo-app.fullname" . }}-backend'
+                name: '{{ include "todo-app.fullname" $ }}-backend'
                 port:
                   number: {{ $.Values.backend.service.port }}
           - path: /health
             pathType: Prefix
             backend:
               service:
-                name: '{{ include "todo-app.fullname" . }}-backend'
+                name: '{{ include "todo-app.fullname" $ }}-backend'
                 port:
                   number: {{ $.Values.backend.service.port }}
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: '{{ include "todo-app.fullname" . }}-frontend'
+                name: '{{ include "todo-app.fullname" $ }}-frontend'
                 port:
                   number: {{ $.Values.frontend.service.port }}
     {{- end }}

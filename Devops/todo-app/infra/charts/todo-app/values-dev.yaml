@@ -8,4 +8,9 @@ frontend:
   replicaCount: 1
 
 ingress:
-  enabled: false
+  enabled: true
+  hosts:
+    - host: todo-app.dev.local
+      paths:
+        - path: /
+          pathType: Prefix
