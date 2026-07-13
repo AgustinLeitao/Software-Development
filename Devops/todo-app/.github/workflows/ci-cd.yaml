@@ -119,6 +119,21 @@ jobs:
         run: |
           az aks get-credentials --resource-group ${{ needs.infra.outputs.resource_group }} --name ${{ needs.infra.outputs.aks_cluster }} --overwrite-existing
 
+      - name: Install NGINX Ingress Controller
+        run: |
+          ENVIRONMENT=${{ needs.infra.outputs.environment }}
+
+          helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+          helm repo update
+
+          helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
+            --namespace ingress-nginx \
+            --create-namespace \
+            --values infra/charts/nginx-ingress/values.yaml \
+            --values infra/charts/nginx-ingress/values-${ENVIRONMENT}.yaml \
+            --wait \
+            --timeout 5m
+
       - name: Deploy Helm chart
         run: |
           ENVIRONMENT=${{ needs.infra.outputs.environment }}
