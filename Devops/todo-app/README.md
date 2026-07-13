@@ -1,61 +1,107 @@
-# Todo App with React, Node, SQLite, AKS, Helm, Bicep, and CI/CD
+<h1 align="center">
+  🚀 Full-Stack Todo App on Azure Kubernetes Service (AKS)
+</h1>
 
-This repository contains a full-stack todo application built with:
+<p align="center">
+  A complete, production-ready Todo application demonstrating a modern full-stack architecture, Infrastructure as Code (IaC), and automated CI/CD pipelines.
+</p>
 
-- React + Vite + TypeScript frontend
-- Node.js + Express + TypeScript backend
-- SQLite persistence for todos
-- Docker-based container images
-- Helm chart for Kubernetes deployment
-- Bicep templates for Azure infrastructure
-- GitHub Actions and Azure Pipelines for CI/CD
+---
 
-## Architecture
+## 🏗 Architecture Overview
 
-- `client/` — React frontend
-- `server/` — Node backend with SQLite
-- `charts/todo-app/` — Helm chart for frontend and backend Kubernetes deployment
-- `infra/` — Bicep templates and environment parameter files
-- `.github/workflows/` — GitHub Actions pipeline
-- `azure-pipelines.yml` — Azure Pipelines definition
+This project is divided into several logical components:
 
-## Deployment environments
+* **🎨 Frontend (`client/`)**: A fast, responsive user interface built with React, Vite, and TypeScript.
+* **⚙️ Backend (`server/`)**: A robust Node.js/Express API written in TypeScript, backed by a local SQLite database.
+* **☁️ Infrastructure (`infra/bicep/`)**: Azure Resource Manager (Bicep) templates to spin up an Azure Kubernetes Service (AKS) cluster and an Azure Container Registry (ACR).
+* **🚢 Kubernetes Deployment (`infra/charts/`)**: Helm charts for deploying the application and the NGINX Ingress Controller.
+* **🔄 CI/CD (`.github/workflows/`)**: Automated GitHub Actions pipelines that provision infrastructure, build Docker images, and deploy to AKS.
 
-This repository is designed to support three environments:
+---
 
-- `dev`
-- `qa`
-- `prod`
+## 💻 Running Locally (Development)
 
-Infra and Helm values are parameterized so each environment can use different settings.
+You can run the entire stack locally using Docker Compose, or run the components individually.
 
-## Local development
+### Option 1: Docker Compose (Recommended)
 
-### Backend
+Ensure Docker Desktop is running, then execute from the root directory:
 
-```powershell
+```bash
+docker compose up --build
+```
+* **Frontend UI**: [http://localhost:5173](http://localhost:5173)
+* **Backend API**: [http://localhost:4000](http://localhost:4000)
+
+### Option 2: Manual Start
+
+**1. Start the Backend API:**
+```bash
 cd server
 npm install
 npm run dev
 ```
 
-The backend listens on `http://localhost:4000`.
-
-### Frontend
-
-```powershell
+**2. Start the Frontend:**
+Open a new terminal window:
+```bash
 cd client
 npm install
 npm run dev
 ```
 
-Visit `http://localhost:5173` and the frontend will proxy API requests to the backend.
+---
 
-## Infrastructure
+## 🚀 CI/CD & Deployment (Azure AKS)
 
-The Azure Bicep templates are in `infra/main.bicep` with environment files in `infra/parameters/`.
+This project includes a fully automated deployment pipeline (`.github/workflows/ci-cd.yaml`). 
 
-## CI/CD
+When triggered, the pipeline will:
+1. Provision the Azure Infrastructure (AKS & ACR) using **Bicep**.
+2. Build and push the frontend and backend Docker images to ACR.
+3. Install the **NGINX Ingress Controller** into the cluster (configured with TCP health probes for Azure Load Balancer compatibility).
+4. Deploy the application using **Helm**.
 
-- GitHub Actions pipeline: `.github/workflows/ci-cd.yml`
-- Azure Pipelines: `azure-pipelines.yml`
+The Helm charts are configured with environment-specific values (`values-dev.yaml` and `values-prod.yaml`).
+
+---
+
+## 🧪 Testing the Deployed Application
+
+Because the Kubernetes deployment uses **Host-based Ingress Routing**, navigating directly to the Azure Load Balancer's public IP address will return a `404 Not Found`. The Ingress Controller (NGINX) needs a valid `Host` header (e.g., `todo-app.dev.local`) to route the traffic to the correct application.
+
+If you have deployed the application to AKS and want to test it using the public IP provided by Azure, you have two options:
+
+### 1. Command Line Test (cURL)
+You can inject the required `Host` header directly in your terminal request. Replace `<YOUR_AZURE_IP>` with the external IP of your ingress controller.
+
+**For the Dev Environment:**
+```bash
+curl -H "Host: todo-app.dev.local" http://<YOUR_AZURE_IP>/
+```
+**For the Prod Environment:**
+```bash
+curl -H "Host: todo-app.prod.example.com" http://<YOUR_AZURE_IP>/
+```
+
+### 2. Browser Test (Modifying `/etc/hosts`)
+To test the full user interface in your web browser, you can trick your computer into mapping the domain name to your Azure IP address.
+
+1. Open your computer's host resolution file:
+   * **Windows:** Open Notepad as Administrator and edit `C:\Windows\System32\drivers\etc\hosts`
+   * **macOS / Linux:** Run `sudo nano /etc/hosts` in the terminal
+2. Add a new line at the bottom matching your environment:
+   ```text
+   <YOUR_AZURE_IP>  todo-app.dev.local
+   ```
+3. Save the file.
+4. Open your browser and navigate to: [http://todo-app.dev.local](http://todo-app.dev.local)
+
+---
+
+## 🛠 Prerequisites for Cloud Deployment
+
+To deploy this project to your own Azure subscription, you will need:
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) installed and authenticated.
+- A GitHub repository with an `AZURE_CREDENTIALS` secret configured. This secret should contain the JSON credentials for an Azure Service Principal with `Contributor` access to your subscription.
