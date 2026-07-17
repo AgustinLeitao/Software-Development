@@ -10,11 +10,8 @@ frontend:
 ingress:
   enabled: true
   hosts:
-    - host: todo-app.prod.example.com
-      paths:
-        - path: /
-          pathType: Prefix
+    - host: todo-app.com
   tls:
     - hosts:
-        - todo-app.prod.example.com
+        - todo-app.com
       secretName: todo-app-tls

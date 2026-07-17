@@ -10,7 +10,4 @@ frontend:
 ingress:
   enabled: true
   hosts:
-    - host: todo-app.dev.local
-      paths:
-        - path: /
-          pathType: Prefix
+    - host: todo-app-dev.com

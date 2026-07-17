@@ -36,11 +36,5 @@ frontend:
       memory: 64Mi
 
 ingress:
-  enabled: false
   className: nginx
-  hosts:
-    - host: todo-app.local
-      paths:
-        - path: /
-          pathType: Prefix
   tls: []

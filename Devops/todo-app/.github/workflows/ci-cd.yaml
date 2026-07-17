@@ -1,4 +1,4 @@
-name: todoapp-ci-cd
+name: todo-app-ci-cd
 
 on:
   workflow_dispatch:
@@ -11,117 +11,55 @@ on:
         options:
           - dev
           - prod
+      skip-infra:
+        description: "Skip infrastructure deployment"
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: todo-app-ci-cd-${{ github.ref_name }}-${{ github.event.inputs.environment }}
+  cancel-in-progress: false
 
 env:
   DEPLOYMENT_LOCATION: eastus
 
 jobs:
-  infra:
+  deploy-infra:
     runs-on: ubuntu-latest
     outputs:
-      acr_name: ${{ steps.bicep-deploy.outputs.acr_name }}
-      acr_login_server: ${{ steps.bicep-deploy.outputs.acr_login_server }}
-      resource_group: ${{ steps.bicep-deploy.outputs.resource_group }}
-      aks_cluster: ${{ steps.bicep-deploy.outputs.aks_cluster }}
-      environment: ${{ github.event.inputs.environment }}
+      acr_name: ${{ steps.infra-outputs.outputs.acrName }}
+      acr_login_server: ${{ steps.infra-outputs.outputs.acrLoginServer }}
+      resource_group: ${{ steps.infra-outputs.outputs.resourceGroupName }}
+      aks_cluster: ${{ steps.infra-outputs.outputs.aksClusterName }}
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy infra with Bicep
-        id: bicep-deploy
-        run: |
-          DEPLOYMENT_OUTPUT=$(az deployment sub create \
-            --location ${{ env.DEPLOYMENT_LOCATION }} \
-            --template-file infra/bicep/main.bicep \
-            --parameters infra/bicep/parameters/${{ github.event.inputs.environment }}.bicepparam \
-            --query '{acrLoginServer: properties.outputs.acrLoginServer.value, acrName: properties.outputs.acrName.value, resourceGroup: properties.outputs.resourceGroupName.value, aksCluster: properties.outputs.aksClusterName.value}' \
-            -o json)
-          
-          ACR_LOGIN_SERVER=$(echo $DEPLOYMENT_OUTPUT | jq -r '.acrLoginServer' 2>/dev/null)
-          ACR_NAME=$(echo $DEPLOYMENT_OUTPUT | jq -r '.acrName' 2>/dev/null)
-          RESOURCE_GROUP=$(echo $DEPLOYMENT_OUTPUT | jq -r '.resourceGroup' 2>/dev/null)
-          AKS_CLUSTER=$(echo $DEPLOYMENT_OUTPUT | jq -r '.aksCluster' 2>/dev/null)
-          
-          if [ -z "$ACR_LOGIN_SERVER" ] || [ -z "$ACR_NAME" ] || [ -z "$RESOURCE_GROUP" ] || [ -z "$AKS_CLUSTER" ]; then
-            echo "Error: Failed to extract outputs from Bicep deployment"
-            echo "Output was: $DEPLOYMENT_OUTPUT"
-            exit 1
-          fi
-          
-          echo "acr_login_server=$ACR_LOGIN_SERVER" >> $GITHUB_OUTPUT
-          echo "acr_name=$ACR_NAME" >> $GITHUB_OUTPUT
-          echo "resource_group=$RESOURCE_GROUP" >> $GITHUB_OUTPUT
-          echo "aks_cluster=$AKS_CLUSTER" >> $GITHUB_OUTPUT
-
-  build-push:
-    runs-on: ubuntu-latest
-    needs: infra
-    outputs:
-      image_tag: ${{ steps.set-tag.outputs.image-tag }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Fix Docker Socket Permissions
-        run: |
-          if [ -S /var/run/docker.sock ]; then
-            sudo chmod 666 /var/run/docker.sock
-          fi
-          
-      - name: Set image tag
-        id: set-tag
-        run: |
-          ENVIRONMENT=${{ needs.infra.outputs.environment }}
-          echo "image-tag=${ENVIRONMENT}-$(date +%s)" >> $GITHUB_OUTPUT
-
-      - name: Login to Azure
-        uses: azure/login@v2
+      - name: Deploy infra
+        id: deploy-infra
+        if: ${{ github.event.inputs.skip-infra == 'false'}}
+        uses: azure/arm-deploy@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Log in to Azure Container Registry
-        run: |
-          az acr login --name ${{ needs.infra.outputs.acr_name }}
-
-      - name: Build and push backend image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./server
-          push: true
-          tags: ${{ needs.infra.outputs.acr_login_server }}/todo-app-server:${{ steps.set-tag.outputs.image-tag }}
-
-      - name: Build and push frontend image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./client
-          push: true
-          tags: ${{ needs.infra.outputs.acr_login_server }}/todo-app-client:${{ steps.set-tag.outputs.image-tag }}
-          build-args: |
-            VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [infra, build-push]
-    environment: ${{ needs.infra.outputs.environment }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
+          scope: subscription
+          deploymentName: todo-app-${{ github.event.inputs.environment }}
+          region: ${{ env.DEPLOYMENT_LOCATION }}
+          template: infra/bicep/main.bicep
+          parameters: infra/bicep/parameters/${{ github.event.inputs.environment }}.bicepparam
+     
       - name: Get AKS credentials
+        if: ${{ github.event.inputs.skip-infra == 'false' }}
         run: |
-          az aks get-credentials --resource-group ${{ needs.infra.outputs.resource_group }} --name ${{ needs.infra.outputs.aks_cluster }} --overwrite-existing
+          az aks get-credentials --resource-group ${{ steps.deploy-infra.outputs.resourceGroupName }} --name ${{ steps.deploy-infra.outputs.aksClusterName  }} --overwrite-existing
 
       - name: Install NGINX Ingress Controller
+        if: ${{ github.event.inputs.skip-infra == 'false' }}
         run: |
-          ENVIRONMENT=${{ needs.infra.outputs.environment }}
+          ENVIRONMENT=${{ github.event.inputs.environment }}
 
           helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
           helm repo update
@@ -133,17 +71,100 @@ jobs:
             --values infra/charts/nginx-ingress/values-${ENVIRONMENT}.yaml \
             --wait \
             --timeout 5m
+      
+      - name: Get infra outputs
+        id: infra-outputs
+        run: |
+          DEPLOYMENT_NAME=todo-app-${{ github.event.inputs.environment }}
+          SKIP_INFRA=${{ github.event.inputs.skip-infra }}
+
+          if [ "$SKIP_INFRA" = 'false' ]; then
+            echo "acrName=${{ steps.deploy-infra.outputs.acrName }}" >> $GITHUB_OUTPUT
+            echo "acrLoginServer=${{ steps.deploy-infra.outputs.acrLoginServer }}" >> $GITHUB_OUTPUT
+            echo "resourceGroupName=${{ steps.deploy-infra.outputs.resourceGroupName }}" >> $GITHUB_OUTPUT
+            echo "aksClusterName=${{ steps.deploy-infra.outputs.aksClusterName }}" >> $GITHUB_OUTPUT
+          else
+            echo "acrName=$(az deployment sub show --name "$DEPLOYMENT_NAME" --query 'properties.outputs.acrName.value' -o tsv)" >> $GITHUB_OUTPUT
+            echo "acrLoginServer=$(az deployment sub show --name "$DEPLOYMENT_NAME" --query 'properties.outputs.acrLoginServer.value' -o tsv)" >> $GITHUB_OUTPUT
+            echo "resourceGroupName=$(az deployment sub show --name "$DEPLOYMENT_NAME" --query 'properties.outputs.resourceGroupName.value' -o tsv)" >> $GITHUB_OUTPUT
+            echo "aksClusterName=$(az deployment sub show --name "$DEPLOYMENT_NAME" --query 'properties.outputs.aksClusterName.value' -o tsv)" >> $GITHUB_OUTPUT
+          fi
+
+  build-and-push-images:
+    runs-on: ubuntu-latest
+    needs: deploy-infra
+    outputs:
+      image_tag: ${{ steps.set-image-tag.outputs.image-tag }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix Docker Socket Permissions
+        run: |
+          if [ -S /var/run/docker.sock ]; then
+            sudo chmod 666 /var/run/docker.sock
+          fi
+          
+      - name: Set image tag
+        id: set-image-tag
+        run: |
+          ENVIRONMENT=${{ github.event.inputs.environment }}
+          echo "image-tag=${ENVIRONMENT}-$(date +%s)" >> $GITHUB_OUTPUT
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Log in to Azure Container Registry
+        run: |
+          az acr login --name ${{ needs.deploy-infra.outputs.acr_name }}
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./server
+          push: true
+          tags: ${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-server:${{ steps.set-image-tag.outputs.image-tag }}
+          cache-from: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-server:cache
+          cache-to: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-server:cache,mode=max
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./client
+          push: true
+          tags: ${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:${{ steps.set-image-tag.outputs.image-tag }}
+          cache-from: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache
+          cache-to: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache,mode=max
+          build-args: |
+            VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}
+
+  deploy-app:
+    runs-on: ubuntu-latest
+    needs: [deploy-infra, build-and-push-images]
+    environment: ${{ github.event.inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get AKS credentials
+        run: |
+          az aks get-credentials --resource-group ${{ needs.deploy-infra.outputs.resource_group }} --name ${{ needs.deploy-infra.outputs.aks_cluster }} --overwrite-existing
 
       - name: Deploy Helm chart
         run: |
-          ENVIRONMENT=${{ needs.infra.outputs.environment }}
+          ENVIRONMENT=${{ github.event.inputs.environment }}
           HELM_VALUES=infra/charts/todo-app/values-${ENVIRONMENT}.yaml
           helm upgrade --install todo-app infra/charts/todo-app \
             --namespace todo-app \
             --create-namespace \
             --set global.environment=$ENVIRONMENT \
-            --set backend.image.repository=${{ needs.infra.outputs.acr_login_server }}/todo-app-server \
-            --set backend.image.tag=${{ needs.build-push.outputs.image_tag }} \
-            --set frontend.image.repository=${{ needs.infra.outputs.acr_login_server }}/todo-app-client \
-            --set frontend.image.tag=${{ needs.build-push.outputs.image_tag }} \
+            --set backend.image.repository=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-server \
+            --set backend.image.tag=${{ needs.build-and-push-images.outputs.image_tag }} \
+            --set frontend.image.repository=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client \
+            --set frontend.image.tag=${{ needs.build-and-push-images.outputs.image_tag }} \
             --values $HELM_VALUES

@@ -3,8 +3,11 @@ targetScope = 'subscription'
 param environmentName string
 param location string = 'eastus'
 param aksNodeCount int = 1
-param agentVMSize string = 'standard_dc2ds_v3'
+param agentVMSize string = 'standard_d2as_v7'
 param acrSku string = 'Basic'
+param enableAutoScaling bool = false
+param minCount int = 1
+param maxCount int = 3
 
 var rgName = toLower('todoapp-${environmentName}-rg')
 var acrName = toLower('todoapp${environmentName}acr')
@@ -27,6 +30,9 @@ module aksCluster './components/aks.bicep' = {
     aksName: aksName
     dnsPrefix: dnsPrefix
     acrName: acrName
+    enableAutoScaling: enableAutoScaling
+    minCount: minCount
+    maxCount: maxCount
   }
 }
 
