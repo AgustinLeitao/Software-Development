@@ -98,12 +98,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fix Docker Socket Permissions
-        run: |
-          if [ -S /var/run/docker.sock ]; then
-            sudo chmod 666 /var/run/docker.sock
-          fi
-          
       - name: Set image tag
         id: set-image-tag
         run: |
@@ -136,8 +130,6 @@ jobs:
           tags: ${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:${{ steps.set-image-tag.outputs.image-tag }}
           cache-from: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache
           cache-to: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache,mode=max
-          build-args: |
-            VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}
 
   deploy-app:
     runs-on: ubuntu-latest
