@@ -7,9 +7,6 @@ type Todo = {
   createdAt: string;
 };
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
-const apiUrl = `${apiBaseUrl}`;
-
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [title, setTitle] = useState('');
@@ -23,7 +20,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${apiUrl}/todos`);
+      const response = await fetch(`/todos`);
       const data = await response.json();
       setTodos(data);
       setLoading(false);
@@ -38,7 +35,7 @@ function App() {
       return;
     }
 
-    const response = await fetch(`${apiUrl}/todos`, {
+    const response = await fetch(`/todos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: title.trim() }),
@@ -53,7 +50,7 @@ function App() {
   }
 
   async function handleToggle(todo: Todo) {
-    const response = await fetch(`${apiUrl}/todos/${todo.id}`, {
+    const response = await fetch(`$todos/${todo.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ completed: !todo.completed }),
@@ -73,7 +70,7 @@ function App() {
   }
 
   async function handleDelete(id: number) {
-    const response = await fetch(`${apiUrl}/todos/${id}`, {
+    const response = await fetch(`$/todos/${id}`, {
       method: 'DELETE',
     });
 
