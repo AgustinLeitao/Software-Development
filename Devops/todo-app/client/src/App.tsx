@@ -50,7 +50,7 @@ function App() {
   }
 
   async function handleToggle(todo: Todo) {
-    const response = await fetch(`$todos/${todo.id}`, {
+    const response = await fetch(`/todos/${todo.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ completed: !todo.completed }),
@@ -70,7 +70,7 @@ function App() {
   }
 
   async function handleDelete(id: number) {
-    const response = await fetch(`$/todos/${id}`, {
+    const response = await fetch(`/todos/${id}`, {
       method: 'DELETE',
     });
 
