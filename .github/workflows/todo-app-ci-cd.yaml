@@ -108,6 +108,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Set image tag
         id: set-image-tag
         run: |
@@ -140,8 +143,8 @@ jobs:
           context: Devops/todo-app/client
           push: true
           tags: ${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:${{ steps.set-image-tag.outputs.image-tag }}
-          cache-from: type=registry,ref=${{ needs.needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache
-          cache-to: type=registry,ref=${{ needs.needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache,mode=max
+          cache-from: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache
+          cache-to: type=registry,ref=${{ needs.deploy-infra.outputs.acr_login_server }}/todo-app-client:cache,mode=max
 
   deploy-app:
     runs-on: ubuntu-latest
@@ -159,7 +162,7 @@ jobs:
 
       - name: Get AKS credentials
         run: |
-          az aks get-credentials --resource-group ${{ needs.deploy-infra.outputs.resource_group }} --name ${{ needs.needs.deploy-infra.outputs.aks_cluster }} --overwrite-existing
+          az aks get-credentials --resource-group ${{ needs.deploy-infra.outputs.resource_group }} --name ${{ needs.deploy-infra.outputs.aks_cluster }} --overwrite-existing
 
       - name: Deploy Helm chart
         run: |

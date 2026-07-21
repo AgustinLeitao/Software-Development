@@ -16,17 +16,23 @@ This project is divided into several logical components:
 * **⚙️ Backend (`server/`)**: A robust Node.js/Express API written in TypeScript, backed by a local SQLite database.
 * **☁️ Infrastructure (`infra/bicep/`)**: Azure Resource Manager (Bicep) templates to spin up an Azure Kubernetes Service (AKS) cluster and an Azure Container Registry (ACR).
 * **🚢 Kubernetes Deployment (`infra/charts/`)**: Helm charts for deploying the application and the NGINX Ingress Controller.
-* **🔄 CI/CD (`.github/workflows/`)**: Automated GitHub Actions pipelines that provision infrastructure, build Docker images, and deploy to AKS.
+* **🔄 CI/CD (`.github/workflows/`)**: Automated GitHub Actions pipelines at the root of the repository.
 
 ---
 
 ## 💻 Running Locally (Development)
 
-You can run the entire stack locally using Docker Compose, or run the components individually.
+To run the application locally, first navigate to the project directory:
+
+```bash
+cd Devops/todo-app
+```
+
+You can run the entire stack using Docker Compose, or run the components individually.
 
 ### Option 1: Docker Compose (Recommended)
 
-Ensure Docker Desktop is running, then execute from the root directory:
+Ensure Docker Desktop is running, then execute:
 
 ```bash
 docker compose up --build
@@ -55,7 +61,7 @@ npm run dev
 
 ## 🚀 CI/CD & Deployment (Azure AKS)
 
-This project includes a fully automated deployment pipeline (`.github/workflows/ci-cd.yaml`). 
+This project includes a fully automated deployment pipeline located at the root of the repository: `.github/workflows/todo-app-ci-cd.yaml`. 
 
 When triggered, the pipeline will:
 1. Provision the Azure Infrastructure (AKS & ACR) using **Bicep**.
@@ -102,6 +108,10 @@ To test the full user interface in your web browser, you can trick your computer
 
 ## 🛠 Prerequisites for Cloud Deployment
 
-To deploy this project to your own Azure subscription, you will need:
+To deploy this project to your Azure subscription via GitHub Actions, you will need:
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) installed and authenticated.
-- A GitHub repository with an `AZURE_CREDENTIALS` secret configured. This secret should contain the JSON credentials for an Azure Service Principal with `Contributor` access to your subscription.
+- A GitHub repository with **Repository Secrets** configured for OIDC authentication:
+  - `AZURE_CLIENT_ID`: The App Registration Client ID configured with Federated Credentials.
+  - `AZURE_TENANT_ID`: Your Azure Active Directory Tenant ID.
+  - `AZURE_SUBSCRIPTION_ID`: Your Azure Subscription ID.
+- Setup Azure Federated Credentials pointing to your GitHub repository and branch/environment.
