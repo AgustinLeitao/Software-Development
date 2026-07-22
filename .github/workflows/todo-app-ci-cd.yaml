@@ -89,10 +89,10 @@ jobs:
           SKIP_INFRA=${{ github.event.inputs.skip-infra }}
 
           if [ "$SKIP_INFRA" = 'false' ]; then
-            echo "acrName=${{ steps.deploy-infra.outputs.acrName }}" >> $GITHUB_OUTPUT
-            echo "acrLoginServer=${{ steps.infra-outputs.outputs.acrLoginServer }}" >> $GITHUB_OUTPUT
-            echo "resourceGroupName=${{ steps.deploy-infra.outputs.resourceGroupName }}" >> $GITHUB_OUTPUT
-            echo "aksClusterName=${{ steps.deploy-infra.outputs.aksClusterName }}" >> $GITHUB_OUTPUT
+            echo "acrName=${{ steps.deploy-infra.outputs.acrname }}" >> $GITHUB_OUTPUT
+            echo "acrLoginServer=${{ steps.deploy-infra.outputs.acrloginserver }}" >> $GITHUB_OUTPUT
+            echo "resourceGroupName=${{ steps.deploy-infra.outputs.resourcegroupname }}" >> $GITHUB_OUTPUT
+            echo "aksClusterName=${{ steps.deploy-infra.outputs.aksclustername }}" >> $GITHUB_OUTPUT
           else
             echo "acrName=$(az deployment sub show --name "$DEPLOYMENT_NAME" --query 'properties.outputs.acrName.value' -o tsv)" >> $GITHUB_OUTPUT
             echo "acrLoginServer=$(az deployment sub show --name "$DEPLOYMENT_NAME" --query 'properties.outputs.acrLoginServer.value' -o tsv)" >> $GITHUB_OUTPUT
