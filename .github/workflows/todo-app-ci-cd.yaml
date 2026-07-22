@@ -53,13 +53,16 @@ jobs:
       - name: Deploy infra
         id: deploy-infra
         if: ${{ github.event.inputs.skip-infra == 'false'}}
-        uses: azure/arm-deploy@v1
+        uses: azure/bicep-deploy@v1
         with:
+          type: deployment
+          operation: create
           scope: subscription
-          deploymentName: todo-app-${{ github.event.inputs.environment }}
-          region: ${{ env.DEPLOYMENT_LOCATION }}
-          template: Devops/todo-app/infra/bicep/main.bicep
-          parameters: Devops/todo-app/infra/bicep/parameters/${{ github.event.inputs.environment }}.bicepparam
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          name: todo-app-${{ github.event.inputs.environment }}
+          location: ${{ env.DEPLOYMENT_LOCATION }}
+          template-file: Devops/todo-app/infra/bicep/main.bicep
+          parameters-file: Devops/todo-app/infra/bicep/parameters/${{ github.event.inputs.environment }}.bicepparam
      
       - name: Get AKS credentials
         if: ${{ github.event.inputs.skip-infra == 'false' }}
