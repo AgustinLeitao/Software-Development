@@ -111,7 +111,7 @@ jobs:
 
       - name: Deploy Helm chart to DEV
         run: |
-          helm upgrade --install todo-app Devops/todo-app/infra/charts/todo-app \
+          helm upgrade --install todo-app infra/charts/todo-app \
             --namespace todo-app \
             --create-namespace \
             --set global.environment=dev \
@@ -119,7 +119,7 @@ jobs:
             --set backend.image.tag=${{ needs.build-and-push.outputs.image_tag }} \
             --set frontend.image.repository=${{ needs.build-and-push.outputs.acr_login_server }}/todo-app-client \
             --set frontend.image.tag=${{ needs.build-and-push.outputs.image_tag }} \
-            --values Devops/todo-app/infra/charts/todo-app/values-dev.yaml \
+            --values infra/charts/todo-app/values-dev.yaml \
             --wait \
             --timeout 5m
 
@@ -155,8 +155,7 @@ jobs:
 
       - name: Deploy Helm chart to PROD
         run: |
-          # Same image tag promoted from DEV — this is the promotion guarantee
-          helm upgrade --install todo-app Devops/todo-app/infra/charts/todo-app \
+          helm upgrade --install todo-app infra/charts/todo-app \
             --namespace todo-app \
             --create-namespace \
             --set global.environment=prod \
@@ -164,6 +163,6 @@ jobs:
             --set backend.image.tag=${{ needs.build-and-push.outputs.image_tag }} \
             --set frontend.image.repository=${{ needs.build-and-push.outputs.acr_login_server }}/todo-app-client \
             --set frontend.image.tag=${{ needs.build-and-push.outputs.image_tag }} \
-            --values Devops/todo-app/infra/charts/todo-app/values-prod.yaml \
+            --values infra/charts/todo-app/values-prod.yaml \
             --wait \
             --timeout 5m
