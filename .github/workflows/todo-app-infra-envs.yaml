@@ -71,8 +71,8 @@ jobs:
           helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
             --namespace ingress-nginx \
             --create-namespace \
-            --values Devops/todo-app/infra/charts/nginx-ingress/values.yaml \
-            --values Devops/todo-app/infra/charts/nginx-ingress/values-dev.yaml \
+            --values infra/charts/nginx-ingress/values.yaml \
+            --values infra/charts/nginx-ingress/values-dev.yaml \
             --wait \
             --timeout 5m
 
@@ -125,7 +125,7 @@ jobs:
           helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
             --namespace ingress-nginx \
             --create-namespace \
-            --values Devops/todo-app/infra/charts/nginx-ingress/values.yaml \
-            --values Devops/todo-app/infra/charts/nginx-ingress/values-prod.yaml \
+            --values infra/charts/nginx-ingress/values.yaml \
+            --values infra/charts/nginx-ingress/values-prod.yaml \
             --wait \
             --timeout 5m
