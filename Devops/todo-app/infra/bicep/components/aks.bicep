@@ -1,24 +1,15 @@
 param location string = 'eastus'
 param aksNodeCount int = 1
 param agentVMSize string = 'standard_d2as_v7'
-param acrSku string = 'Basic'
-param acrName string
 param aksName string
 param dnsPrefix string
 param enableAutoScaling bool = false
 param minCount int = 1
 param maxCount int = 3
 
-resource acr 'Microsoft.ContainerRegistry/registries@2025-11-01' = {
-  name: acrName
-  location: location
-  sku: {
-    name: acrSku
-  }
-  properties: {
-    adminUserEnabled: false
-  }
-}
+param sharedAcrId string
+param sharedAcrResourceGroup string = split(sharedAcrId, '/')[4]
+param sharedSubscriptionId string = split(sharedAcrId, '/')[2]
 
 resource aks 'Microsoft.ContainerService/managedClusters@2026-02-01' = {
   name: aksName
@@ -44,16 +35,13 @@ resource aks 'Microsoft.ContainerService/managedClusters@2026-02-01' = {
   }
 }
 
-resource acrPullRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
-  name: guid(acr.id, aks.id, 'AcrPull')
-  scope: acr
-  properties: {
-    principalId: aks.properties.identityProfile.kubeletidentity.objectId
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')
-    principalType: 'ServicePrincipal'
+module acrPullRole './acr-pull-role.bicep' = {
+  name: 'acrPullRoleAssignment'
+  scope: resourceGroup(sharedSubscriptionId, sharedAcrResourceGroup)
+  params: {
+    sharedAcrName: last(split(sharedAcrId, '/'))
+    kubeletIdentityObjectId: aks.properties.identityProfile.kubeletidentity.objectId
   }
 }
 
-output acrLoginServer string = acr.properties.loginServer
-output acrName string = acr.name
 output aksClusterName string = aks.name
