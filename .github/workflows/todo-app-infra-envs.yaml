@@ -76,12 +76,6 @@ jobs:
             --wait \
             --timeout 5m
 
-      - name: Set DEV infra outputs
-        id: dev-outputs
-        run: |
-          echo "resourceGroupName=${{ steps.deploy-dev.outputs.resourceGroupName }}" >> $GITHUB_OUTPUT
-          echo "aksClusterName=${{ steps.deploy-dev.outputs.aksClusterName }}" >> $GITHUB_OUTPUT
-
   deploy-prod-infra:
     name: "Infra · PROD"
     runs-on: ubuntu-latest
