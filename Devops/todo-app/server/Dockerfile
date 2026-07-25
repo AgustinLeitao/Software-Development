@@ -8,9 +8,12 @@ RUN npm prune --production
 
 FROM node:20-slim AS runtime
 WORKDIR /usr/src/app
-COPY --chown=node:node --from=build /usr/src/app/dist ./dist
-COPY --chown=node:node --from=build /usr/src/app/package.json ./package.json
-COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
+
+COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/package.json ./package.json
+COPY --from=build /usr/src/app/node_modules ./node_modules
+RUN chown -R node:node /usr/src/app
 
 USER node
+
 CMD ["node", "dist/index.js"]
