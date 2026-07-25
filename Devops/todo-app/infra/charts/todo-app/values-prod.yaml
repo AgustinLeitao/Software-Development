@@ -11,7 +11,3 @@ ingress:
   enabled: true
   hosts:
     - host: todo-app.com
-  tls:
-    - hosts:
-        - todo-app.com
-      secretName: todo-app-tls
