@@ -1,4 +1,4 @@
-name: todo-app-infra-shared
+name: todo-app-infra-shared-workflow
 
 on:
   workflow_dispatch:

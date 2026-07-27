@@ -1,4 +1,4 @@
-name: todo-app-infra-envs
+name: todo-app-infra-workflow
 
 on:
   workflow_dispatch:

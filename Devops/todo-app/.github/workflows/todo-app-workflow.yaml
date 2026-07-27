@@ -1,4 +1,4 @@
-name: app
+name: todo-app-workflow
 
 on:
   push:
