@@ -28,19 +28,7 @@ To run the application locally, first navigate to the project directory:
 cd Devops/todo-app
 ```
 
-You can run the entire stack using Docker Compose, or run the components individually.
-
-### Option 1: Docker Compose (Recommended)
-
-Ensure Docker Desktop is running, then execute:
-
-```bash
-docker compose up --build
-```
-* **Frontend UI**: [http://localhost:5173](http://localhost:5173)
-* **Backend API**: [http://localhost:4000](http://localhost:4000)
-
-### Option 2: Manual Start
+Then follow the steps below.
 
 **1. Start the Backend API:**
 ```bash
@@ -61,9 +49,9 @@ npm run dev
 
 ## 🚀 CI/CD & Deployment (Azure AKS)
 
-This project includes a fully automated deployment pipeline located at the root of the repository: `.github/workflows/todo-app-ci-cd.yaml`. 
+This project includes a fully automated deployment pipeline located at the root of the repository: `.github/workflows`. 
 
-When triggered, the pipeline will:
+When the workflows are triggered, the pipelines will:
 1. Provision the Azure Infrastructure (AKS & ACR) using **Bicep**.
 2. Build and push the frontend and backend Docker images to ACR.
 3. Install the **NGINX Ingress Controller** into the cluster (configured with TCP health probes for Azure Load Balancer compatibility).
@@ -75,7 +63,7 @@ The Helm charts are configured with environment-specific values (`values-dev.yam
 
 ## 🧪 Testing the Deployed Application
 
-Because the Kubernetes deployment uses **Host-based Ingress Routing**, navigating directly to the Azure Load Balancer's public IP address will return a `404 Not Found`. The Ingress Controller (NGINX) needs a valid `Host` header (e.g., `todo-app.dev.local`) to route the traffic to the correct application.
+Because the Kubernetes deployment uses **Host-based Ingress Routing**, navigating directly to the Azure Load Balancer's public IP address will return a `404 Not Found`. The Ingress Controller (NGINX) needs a valid `Host` header (e.g., `todo-app-dev.com`) to route the traffic to the correct application.
 
 If you have deployed the application to AKS and want to test it using the public IP provided by Azure, you have two options:
 
@@ -84,11 +72,11 @@ You can inject the required `Host` header directly in your terminal request. Rep
 
 **For the Dev Environment:**
 ```bash
-curl -H "Host: todo-app.dev.local" http://<YOUR_AZURE_IP>/
+curl -H "Host: todo-app-dev.com" http://<YOUR_AZURE_IP>/
 ```
 **For the Prod Environment:**
 ```bash
-curl -H "Host: todo-app.prod.example.com" http://<YOUR_AZURE_IP>/
+curl -H "Host: todo-app.com" http://<YOUR_AZURE_IP>/
 ```
 
 ### 2. Browser Test (Modifying `/etc/hosts`)
@@ -99,10 +87,10 @@ To test the full user interface in your web browser, you can trick your computer
    * **macOS / Linux:** Run `sudo nano /etc/hosts` in the terminal
 2. Add a new line at the bottom matching your environment:
    ```text
-   <YOUR_AZURE_IP>  todo-app.dev.local
+   <YOUR_AZURE_IP>  todo-app-dev.com
    ```
 3. Save the file.
-4. Open your browser and navigate to: [http://todo-app.dev.local](http://todo-app.dev.local)
+4. Open your browser and navigate to: [http://todo-app-dev.com](http://todo-app-dev.com)
 
 ---
 
