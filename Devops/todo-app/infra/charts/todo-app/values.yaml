@@ -38,3 +38,9 @@ frontend:
 ingress:
   className: nginx
   tls: []
+
+clusterIssuer:
+  enabled: true
+  name: letsencrypt-prod
+  email: agustinleitao@gmail.com
+
