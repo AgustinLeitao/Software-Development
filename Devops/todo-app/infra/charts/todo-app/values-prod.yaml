@@ -10,4 +10,4 @@ frontend:
 ingress:
   enabled: true
   hosts:
-    - host: todo-app.com
+    - host: www.todo-app.lat
