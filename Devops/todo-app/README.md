@@ -63,7 +63,7 @@ The Helm charts are configured with environment-specific values (`values-dev.yam
 
 ## 🧪 Testing the Deployed Application
 
-Because the Kubernetes deployment uses **Host-based Ingress Routing**, navigating directly to the Azure Load Balancer's public IP address will return a `404 Not Found`. The Ingress Controller (NGINX) needs a valid `Host` header (e.g., `todo-app-dev.com`) to route the traffic to the correct application.
+Because the Kubernetes deployment uses **Host-based Ingress Routing**, navigating directly to the Azure Load Balancer's public IP address will return a `404 Not Found`. The Ingress Controller (NGINX) needs a valid `Host` header (e.g., `www.todo-app.lat`) to route the traffic to the correct application.
 
 If you have deployed the application to AKS and want to test it using the public IP provided by Azure, you have two options:
 
@@ -72,7 +72,7 @@ You can inject the required `Host` header directly in your terminal request. Rep
 
 **For the Dev Environment:**
 ```bash
-curl -H "Host: todo-app-dev.com" http://<YOUR_AZURE_IP>/
+curl -H "Host: www.todo-app.lat" http://<YOUR_AZURE_IP>/
 ```
 **For the Prod Environment:**
 ```bash
@@ -87,10 +87,10 @@ To test the full user interface in your web browser, you can trick your computer
    * **macOS / Linux:** Run `sudo nano /etc/hosts` in the terminal
 2. Add a new line at the bottom matching your environment:
    ```text
-   <YOUR_AZURE_IP>  todo-app-dev.com
+   <YOUR_AZURE_IP>  www.todo-app.lat
    ```
 3. Save the file.
-4. Open your browser and navigate to: [http://todo-app-dev.com](http://todo-app-dev.com)
+4. Open your browser and navigate to: [http://www.todo-app.lat](http://www.todo-app.lat)
 
 ---
 
