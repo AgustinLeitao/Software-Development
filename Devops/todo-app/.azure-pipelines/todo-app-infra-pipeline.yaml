@@ -24,7 +24,6 @@ stages:
 
                 - task: AzureCLI@2
                   displayName: 'Get shared infra ACR ID & Deploy DEV infra'
-                  id: deployDev
                   inputs:
                     azureSubscription: $(azureSubscription)
                     scriptType: 'bash'
