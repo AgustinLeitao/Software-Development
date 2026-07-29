@@ -16,19 +16,17 @@ This project is divided into several logical components:
 * **⚙️ Backend (`server/`)**: A robust Node.js/Express API written in TypeScript, backed by a local SQLite database.
 * **☁️ Infrastructure (`infra/bicep/`)**: Azure Resource Manager (Bicep) templates to spin up an Azure Kubernetes Service (AKS) cluster and an Azure Container Registry (ACR).
 * **🚢 Kubernetes Deployment (`infra/charts/`)**: Helm charts for deploying the application and the NGINX Ingress Controller.
-* **🔄 CI/CD (`.github/workflows/`)**: Automated GitHub Actions pipelines at the root of the repository.
+* **🔄 CI/CD (`.github/workflows/`)**: Automated GitHub Actions pipelines for infrastructure setup and application deployment.
 
 ---
 
 ## 💻 Running Locally (Development)
 
-To run the application locally, first navigate to the project directory:
+To run the application locally:
 
 ```bash
 cd Devops/todo-app
 ```
-
-Then follow the steps below.
 
 **1. Start the Backend API:**
 ```bash
@@ -36,6 +34,7 @@ cd server
 npm install
 npm run dev
 ```
+The backend API will run on `http://localhost:4000`.
 
 **2. Start the Frontend:**
 Open a new terminal window:
@@ -44,20 +43,29 @@ cd client
 npm install
 npm run dev
 ```
+The frontend will run on `http://localhost:5173`.
 
 ---
 
 ## 🚀 CI/CD & Deployment (Azure AKS)
 
-This project includes a fully automated deployment pipeline located at the root of the repository: `.github/workflows`. 
+### Running Workflows from GitHub UI
 
-When the workflows are triggered, the pipelines will:
+1. Go to your GitHub repository in your browser.
+2. Click on the **Actions** tab.
+3. Select the desired workflow from the left sidebar:
+   - **`Todo App Infra Shared`**: Shared infrastructure prerequisites.
+   - **`Todo App Infra`**: AKS cluster and ACR provisioning.
+   - **`Todo App Deployment`**: Build, push Docker images, and deploy Helm release to AKS.
+4. Click **Run workflow**, choose the target branch and environment (e.g., `dev` or `prod`), and click the **Run workflow** button.
+
+### What the Pipelines Do
+
+When triggered, the automated pipelines execute the following steps:
 1. Provision the Azure Infrastructure (AKS & ACR) using **Bicep**.
 2. Build and push the frontend and backend Docker images to ACR.
 3. Install the **NGINX Ingress Controller** into the cluster (configured with TCP health probes for Azure Load Balancer compatibility).
-4. Deploy the application using **Helm**.
-
-The Helm charts are configured with environment-specific values (`values-dev.yaml` and `values-prod.yaml`).
+4. Deploy the application using **Helm** with environment-specific values (`values-dev.yaml` and `values-prod.yaml`).
 
 ---
 
