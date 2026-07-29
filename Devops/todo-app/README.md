@@ -16,7 +16,7 @@ This project is divided into several logical components:
 * **⚙️ Backend (`server/`)**: A robust Node.js/Express API written in TypeScript, backed by a local SQLite database.
 * **☁️ Infrastructure (`infra/bicep/`)**: Azure Resource Manager (Bicep) templates to spin up an Azure Kubernetes Service (AKS) cluster and an Azure Container Registry (ACR).
 * **🚢 Kubernetes Deployment (`infra/charts/`)**: Helm charts for deploying the application and the NGINX Ingress Controller.
-* **🔄 CI/CD (`.github/workflows/`)**: Automated GitHub Actions pipelines for infrastructure setup and application deployment.
+* **🔄 CI/CD (`.github/workflows/` & `.azure-pipelines/`)**: Automated GitHub Actions and Azure Pipelines workflows for infrastructure setup and application deployment.
 
 ---
 

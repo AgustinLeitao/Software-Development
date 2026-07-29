@@ -1,0 +1,29 @@
+name: todo-app-infra-shared-pipeline
+
+trigger: none
+pr: none
+
+variables:
+  azureSubscription: 'AzureServiceConnection'
+  deploymentLocation: 'eastus'
+
+stages:
+  - stage: DeploySharedInfra
+    displayName: "Deploy Shared Infrastructure"
+    jobs:
+      - job: DeploySharedInfraJob
+        displayName: "Infra · Shared"
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - task: AzureCLI@2
+            displayName: 'Deploy shared infra'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az deployment sub create \
+                  --name todo-app-shared \
+                  --location $(deploymentLocation) \
+                  --template-file Devops/todo-app/infra/bicep/main-shared.bicep

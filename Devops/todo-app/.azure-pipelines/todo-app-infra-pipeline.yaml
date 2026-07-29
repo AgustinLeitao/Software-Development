@@ -1,0 +1,151 @@
+name: todo-app-infra-pipeline
+
+trigger: none
+pr: none
+
+variables:
+  azureSubscription: 'AzureServiceConnection'
+  deploymentLocation: 'eastus'
+
+stages:
+  - stage: DeployDevInfra
+    displayName: "Deploy DEV Infrastructure"
+    jobs:
+      - deployment: DeployDevInfraJob
+        displayName: "Infra · DEV"
+        environment: 'dev'
+        pool:
+          vmImage: 'ubuntu-latest'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: AzureCLI@2
+                  displayName: 'Get shared infra ACR ID & Deploy DEV infra'
+                  id: deployDev
+                  inputs:
+                    azureSubscription: $(azureSubscription)
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      ACR_ID=$(az deployment sub show \
+                        --name 'todo-app-shared' \
+                        --query 'properties.outputs.acrId.value' \
+                        -o tsv)
+                      
+                      DEPLOY_OUTPUT=$(az deployment sub create \
+                        --name todo-app-dev \
+                        --location $(deploymentLocation) \
+                        --template-file infra/bicep/main.bicep \
+                        --parameters infra/bicep/parameters/dev.bicepparam sharedAcrId="$ACR_ID" \
+                        --query 'properties.outputs' -o json)
+                      
+                      RESOURCE_GROUP=$(echo "$DEPLOY_OUTPUT" | jq -r '.resourceGroupName.value')
+                      AKS_CLUSTER=$(echo "$DEPLOY_OUTPUT" | jq -r '.aksClusterName.value')
+                      
+                      echo "##vso[task.setvariable variable=devResourceGroup]$RESOURCE_GROUP"
+                      echo "##vso[task.setvariable variable=devAksCluster]$AKS_CLUSTER"
+
+                - task: AzureCLI@2
+                  displayName: 'Get AKS credentials & Install Helm Charts (DEV)'
+                  inputs:
+                    azureSubscription: $(azureSubscription)
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      az aks get-credentials \
+                        --resource-group "$(devResourceGroup)" \
+                        --name "$(devAksCluster)" \
+                        --overwrite-existing
+                      
+                      helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+                      helm repo update
+                      helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
+                        --namespace ingress-nginx \
+                        --create-namespace \
+                        --values infra/charts/nginx-ingress/values.yaml \
+                        --values infra/charts/nginx-ingress/values-dev.yaml \
+                        --wait \
+                        --timeout 5m
+                      
+                      helm repo add jetstack https://charts.jetstack.io
+                      helm repo update
+                      helm upgrade --install cert-manager jetstack/cert-manager \
+                        --namespace cert-manager \
+                        --create-namespace \
+                        --set crds.enabled=true \
+                        --wait \
+                        --timeout 5m
+
+  - stage: DeployProdInfra
+    displayName: "Deploy PROD Infrastructure"
+    dependsOn: DeployDevInfra
+    jobs:
+      - deployment: DeployProdInfraJob
+        displayName: "Infra · PROD"
+        environment: 'prod'
+        pool:
+          vmImage: 'ubuntu-latest'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: AzureCLI@2
+                  displayName: 'Get shared infra ACR ID & Deploy PROD infra'
+                  inputs:
+                    azureSubscription: $(azureSubscription)
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      ACR_ID=$(az deployment sub show \
+                        --name 'todo-app-shared' \
+                        --query 'properties.outputs.acrId.value' \
+                        -o tsv)
+                      
+                      DEPLOY_OUTPUT=$(az deployment sub create \
+                        --name todo-app-prod \
+                        --location $(deploymentLocation) \
+                        --template-file infra/bicep/main.bicep \
+                        --parameters infra/bicep/parameters/prod.bicepparam sharedAcrId="$ACR_ID" \
+                        --query 'properties.outputs' -o json)
+                      
+                      RESOURCE_GROUP=$(echo "$DEPLOY_OUTPUT" | jq -r '.resourceGroupName.value')
+                      AKS_CLUSTER=$(echo "$DEPLOY_OUTPUT" | jq -r '.aksClusterName.value')
+                      
+                      echo "##vso[task.setvariable variable=prodResourceGroup]$RESOURCE_GROUP"
+                      echo "##vso[task.setvariable variable=prodAksCluster]$AKS_CLUSTER"
+
+                - task: AzureCLI@2
+                  displayName: 'Get AKS credentials & Install Helm Charts (PROD)'
+                  inputs:
+                    azureSubscription: $(azureSubscription)
+                    scriptType: 'bash'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      az aks get-credentials \
+                        --resource-group "$(prodResourceGroup)" \
+                        --name "$(prodAksCluster)" \
+                        --overwrite-existing
+                      
+                      helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+                      helm repo update
+                      helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
+                        --namespace ingress-nginx \
+                        --create-namespace \
+                        --values infra/charts/nginx-ingress/values.yaml \
+                        --values infra/charts/nginx-ingress/values-prod.yaml \
+                        --wait \
+                        --timeout 5m
+                      
+                      helm repo add jetstack https://charts.jetstack.io
+                      helm repo update
+                      helm upgrade --install cert-manager jetstack/cert-manager \
+                        --namespace cert-manager \
+                        --create-namespace \
+                        --set crds.enabled=true \
+                        --wait \
+                        --timeout 5m
