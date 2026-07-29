@@ -24,9 +24,6 @@ jobs:
     name: "Infra · DEV"
     runs-on: ubuntu-latest
     environment: dev
-    outputs:
-      resource_group: ${{ steps.dev-outputs.outputs.resourceGroupName }}
-      aks_cluster: ${{ steps.dev-outputs.outputs.aksClusterName }}
     steps:
       - uses: actions/checkout@v4
 
@@ -73,6 +70,17 @@ jobs:
             --create-namespace \
             --values infra/charts/nginx-ingress/values.yaml \
             --values infra/charts/nginx-ingress/values-dev.yaml \
+            --wait \
+            --timeout 5m
+
+      - name: Install cert-manager (DEV)
+        run: |
+          helm repo add jetstack https://charts.jetstack.io
+          helm repo update
+          helm upgrade --install cert-manager jetstack/cert-manager \
+            --namespace cert-manager \
+            --create-namespace \
+            --set crds.enabled=true \
             --wait \
             --timeout 5m
 
@@ -127,5 +135,16 @@ jobs:
             --create-namespace \
             --values infra/charts/nginx-ingress/values.yaml \
             --values infra/charts/nginx-ingress/values-prod.yaml \
+            --wait \
+            --timeout 5m
+
+      - name: Install cert-manager (PROD)
+        run: |
+          helm repo add jetstack https://charts.jetstack.io
+          helm repo update
+          helm upgrade --install cert-manager jetstack/cert-manager \
+            --namespace cert-manager \
+            --create-namespace \
+            --set crds.enabled=true \
             --wait \
             --timeout 5m

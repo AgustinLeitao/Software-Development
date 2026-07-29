@@ -20,9 +20,6 @@ jobs:
     name: "Infra · DEV"
     runs-on: ubuntu-latest
     environment: dev
-    outputs:
-      resource_group: ${{ steps.dev-outputs.outputs.resourceGroupName }}
-      aks_cluster: ${{ steps.dev-outputs.outputs.aksClusterName }}
     steps:
       - uses: actions/checkout@v4
 
@@ -82,12 +79,6 @@ jobs:
             --set crds.enabled=true \
             --wait \
             --timeout 5m
-
-      - name: Set DEV infra outputs
-        id: dev-outputs
-        run: |
-          echo "resourceGroupName=${{ steps.deploy-dev.outputs.resourceGroupName }}" >> $GITHUB_OUTPUT
-          echo "aksClusterName=${{ steps.deploy-dev.outputs.aksClusterName }}" >> $GITHUB_OUTPUT
 
   deploy-prod-infra:
     name: "Infra · PROD"
