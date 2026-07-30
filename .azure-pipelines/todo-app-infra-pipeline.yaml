@@ -44,8 +44,10 @@ stages:
                       RESOURCE_GROUP=$(echo "$DEPLOY_OUTPUT" | jq -r '.resourceGroupName.value')
                       AKS_CLUSTER=$(echo "$DEPLOY_OUTPUT" | jq -r '.aksClusterName.value')
                       
-                      echo "##vso[task.setvariable variable=devResourceGroup]$RESOURCE_GROUP"
-                      echo "##vso[task.setvariable variable=devAksCluster]$AKS_CLUSTER"
+                      echo "##vso[task.setvariable variable=devResourceGroup;isOutput=true]$RESOURCE_GROUP"
+                      echo "##vso[task.setvariable variable=devAksCluster;isOutput=true]$AKS_CLUSTER"
+                      echo "Set devResourceGroup=$RESOURCE_GROUP"
+                      echo "Set devAksCluster=$AKS_CLUSTER"
 
                 - task: AzureCLI@2
                   displayName: 'Get AKS credentials & Install Helm Charts (DEV)'
@@ -54,6 +56,9 @@ stages:
                     scriptType: 'bash'
                     scriptLocation: 'inlineScript'
                     inlineScript: |
+                      echo "DEBUG: devResourceGroup='$(devResourceGroup)'"
+                      echo "DEBUG: devAksCluster='$(devAksCluster)'"
+                      
                       cd Devops/todo-app
                       az aks get-credentials \
                         --resource-group "$(devResourceGroup)" \
@@ -116,8 +121,10 @@ stages:
                       RESOURCE_GROUP=$(echo "$DEPLOY_OUTPUT" | jq -r '.resourceGroupName.value')
                       AKS_CLUSTER=$(echo "$DEPLOY_OUTPUT" | jq -r '.aksClusterName.value')
                       
-                      echo "##vso[task.setvariable variable=prodResourceGroup]$RESOURCE_GROUP"
-                      echo "##vso[task.setvariable variable=prodAksCluster]$AKS_CLUSTER"
+                      echo "##vso[task.setvariable variable=prodResourceGroup;isOutput=true]$RESOURCE_GROUP"
+                      echo "##vso[task.setvariable variable=prodAksCluster;isOutput=true]$AKS_CLUSTER"
+                      echo "Set prodResourceGroup=$RESOURCE_GROUP"
+                      echo "Set prodAksCluster=$AKS_CLUSTER"
 
                 - task: AzureCLI@2
                   displayName: 'Get AKS credentials & Install Helm Charts (PROD)'
@@ -126,6 +133,9 @@ stages:
                     scriptType: 'bash'
                     scriptLocation: 'inlineScript'
                     inlineScript: |
+                      echo "DEBUG: prodResourceGroup='$(prodResourceGroup)'"
+                      echo "DEBUG: prodAksCluster='$(prodAksCluster)'"
+                      
                       cd Devops/todo-app
                       az aks get-credentials \
                         --resource-group "$(prodResourceGroup)" \
