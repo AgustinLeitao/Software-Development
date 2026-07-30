@@ -26,4 +26,4 @@ stages:
                 az deployment sub create \
                   --name todo-app-shared \
                   --location $(deploymentLocation) \
-                  --template-file infra/bicep/main-shared.bicep
+                  --template-file Devops/todo-app/infra/bicep/main-shared.bicep

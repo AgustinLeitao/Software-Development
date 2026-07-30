@@ -6,8 +6,8 @@ trigger:
       - main
   paths:
     include:
-      - server/*
-      - client/*
+      - Devops/todo-app/server/*
+      - Devops/todo-app/client/*
 
 pr: none
 
@@ -52,7 +52,7 @@ stages:
                 
                 az acr login --name "$ACR_NAME"
                 
-                docker buildkit setup --use || true
+                cd Devops/todo-app
                 docker build -t "$ACR_LOGIN_SERVER/todo-app-server:$(setTag.imageTag)" ./server
                 docker push "$ACR_LOGIN_SERVER/todo-app-server:$(setTag.imageTag)"
                 
@@ -98,6 +98,7 @@ stages:
                         --name "$AKS_CLUSTER" \
                         --overwrite-existing
                       
+                      cd Devops/todo-app
                       helm upgrade --install todo-app infra/charts/todo-app \
                         --namespace todo-app \
                         --create-namespace \
@@ -151,6 +152,7 @@ stages:
                         --name "$AKS_CLUSTER" \
                         --overwrite-existing
                       
+                      cd Devops/todo-app
                       helm upgrade --install todo-app infra/charts/todo-app \
                         --namespace todo-app \
                         --create-namespace \
