@@ -16,7 +16,7 @@ This project is divided into several logical components:
 * **⚙️ Backend (`server/`)**: A robust Node.js/Express API written in TypeScript, backed by a local SQLite database.
 * **☁️ Infrastructure (`infra/bicep/`)**: Azure Resource Manager (Bicep) templates to spin up an Azure Kubernetes Service (AKS) cluster and an Azure Container Registry (ACR).
 * **🚢 Kubernetes Deployment (`infra/charts/`)**: Helm charts for deploying the application and the NGINX Ingress Controller.
-* **🔄 CI/CD (`.github/workflows/` & `.azure-pipelines/`)**: Automated GitHub Actions and Azure Pipelines workflows for infrastructure setup and application deployment.
+* **🔄 CI/CD (`/.github/workflows/` & `.azure-pipelines/`)**: Automated GitHub Actions and Azure Pipelines workflows for infrastructure setup and application deployment.
 
 ---
 
@@ -54,17 +54,17 @@ The frontend will run on `http://localhost:5173`.
 1. Go to your GitHub repository in your browser.
 2. Click on the **Actions** tab.
 3. Select the desired workflow from the left sidebar:
-   - **`Todo App Infra Shared`**: Shared infrastructure prerequisites.
-   - **`Todo App Infra`**: AKS cluster and ACR provisioning.
-   - **`Todo App Deployment`**: Build, push Docker images, and deploy Helm release to AKS.
+   - **`todo-app-infra-shared-workflow`**: Shared infrastructure provisioning.
+   - **`todo-app-infra-workflow`**: Main infrastructure provisioning.
+   - **`todo-app-workflow`**: Build, push Docker images, and deploy Helm release to AKS.
 4. Click **Run workflow**, choose the target branch and environment (e.g., `dev` or `prod`), and click the **Run workflow** button.
 
 ### What the Pipelines Do
 
 When triggered, the automated pipelines execute the following steps:
-1. Provision the Azure Infrastructure (AKS & ACR) using **Bicep**.
+1. Provision Azure Infrastructure (AKS & ACR) using **Bicep**.
 2. Build and push the frontend and backend Docker images to ACR.
-3. Install the **NGINX Ingress Controller** into the cluster (configured with TCP health probes for Azure Load Balancer compatibility).
+3. Install **NGINX Ingress Controller** and **Cert Manager** into the cluster.
 4. Deploy the application using **Helm** with environment-specific values (`values-dev.yaml` and `values-prod.yaml`).
 
 ---
