@@ -1,33 +1,57 @@
-## Overview
+# Software Development Projects
 
-This repository is a collection of personal/sample projects organized by technology.
+- **Arduino / IoT**: `Arduino/SmartTemp` is an embedded system project implemented in C/C++ for Arduino-compatible hardware. It reads analog temperature sensor data, controls an RGB LCD display, and transmits telemetry via Ethernet.
+- **DevOps / Cloud**: `Devops/todo-app` is a full-stack application with a React frontend, TypeScript/Node.js backend, Docker containerization, Azure infrastructure-as-code, Kubernetes deployment, Helm packaging, and CI/CD automation.
+- **Backend services**: `Node.js` contains Express-based APIs, a GraphQL service, database access using Sequelize and SQLite, RabbitMQ messaging patterns, and Redis data structure examples.
+- **Mobile apps**: `React Native` includes Expo-based mobile applications built with React Native, TypeScript, navigation, and Tailwind-style responsive UI.
+- **Web development**: `Web Development` includes React, Angular, vanilla JavaScript, Sass, TypeScript, and build tool examples illustrating modern frontend engineering.
+- **Compiler and language tools**: `Compiler` includes lexer/parser design, syntax tree output, and language processing work that demonstrates compiler construction concepts.
+- **Logic programming**: `Prolog` Practice exercises in Prolog.
+- **Unity**: `Unity/NaVR` Battleship game built using Unity game engine.
 
-## Quick start
+## How to explore the repository
 
-- Clone the repo:
+1. Clone the repository:
+   ```bash
+   git clone <repo-url>
+   ```
 
-  git clone <repo-url>
+2. Open the desired project folder in your editor.
 
-- Search for a project and open its folder in your editor: e.g. `React Native/chat-app` or `Arduino/SmartTemp`.
+3. Run most Node.js and JavaScript projects:
+   ```bash
+   cd <project-folder>
+   npm install
+   npm start
+   ```
 
-- Java / Android projects (Android Studio):
-  - Open the project in Android Studio.
-  - Install the Android SDK and set `JAVA_HOME`/`ANDROID_HOME` as needed.
+4. Run React Native projects:
+   ```bash
+   cd "React Native/chat-app"
+   npm install
+   npx expo start
+   ```
 
-- Node / JavaScript projects (Web, React, React Native):
-  - `cd` into the project folder, run `npm install` (or `yarn`), then `npm start` or `npm run android|ios|web` depending on the project.
+5. Run Angular projects:
+   ```bash
+   cd "Web Development/angular/hello-world"
+   ng serve
+   ```
 
-- Expo (React Native):
-  - `npm install` then `expo start`.
+6. Run the DevOps todo app locally:
+   ```bash
+   cd Devops/todo-app
+   docker-compose up --build
+   ```
 
-- Unity projects:
-  - Open the solution or project folder with Unity Hub / Unity Editor.
+7. Run compiler examples:
+   ```bash
+   cd Compiler
+   Build.bat
+   ```
 
-- Docker (Devops/docker):
-  - `docker-compose up --build` (requires Docker Desktop).
-
-- Compiler exercises (Compiler/):
-  - Run `Build.bat` on Windows to build (look at files in the folder for specific instructions).
-
-- Prolog exercises:
-  - Use SWI-Prolog: `swipl` then `consult('menu.pl').` or run scripts directly with `swipl menu.pl`.
+8. Run Prolog examples:
+   ```bash
+   swipl
+   consult('menu.pl').
+   ```
