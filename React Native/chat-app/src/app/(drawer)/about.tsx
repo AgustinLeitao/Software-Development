@@ -1,17 +1,10 @@
-import { Link } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function Page() {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>Hello World</Text>
-        <Link
-          className="px-6 py-3 text-lg font-bold text-blue-500"
-          href={'./settings'}
-        >
-          About Page
-        </Link>
+        <Text style={styles.title}>About</Text>
       </View>
     </View>
   );
@@ -26,7 +19,6 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     maxWidth: 960,
     marginHorizontal: 'auto',
   },
