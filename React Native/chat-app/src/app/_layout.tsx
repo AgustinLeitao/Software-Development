@@ -1,8 +1,7 @@
 import '../../global.css';
 import { ClerkProvider, useAuth } from '@clerk/expo';
 import { tokenCache } from '@clerk/expo/token-cache';
-import { Slot, useRouter, useSegments } from 'expo-router';
-import { useEffect } from 'react';
+import { Redirect, Slot, useSegments } from 'expo-router';
 import { ActivityIndicator, View } from 'react-native';
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
@@ -14,20 +13,6 @@ if (!publishableKey) {
 function AuthGate() {
   const { isLoaded, isSignedIn } = useAuth();
   const segments = useSegments();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isLoaded) return;
-
-    const inAuthGroup = segments[0] === '(auth)';
-    const inAppGroup = segments[0] === '(drawer)';
-
-    if (isSignedIn && !inAppGroup) {
-      router.replace('/chats');
-    } else if (!isSignedIn && !inAuthGroup) {
-      router.replace('/sign-in');
-    }
-  }, [isLoaded, isSignedIn, segments]);
 
   if (!isLoaded) {
     return (
@@ -35,6 +20,17 @@ function AuthGate() {
         <ActivityIndicator size="large" />
       </View>
     );
+  }
+
+  const inAuthGroup = segments[0] === '(auth)';
+  const inAppGroup = segments[0] === '(drawer)';
+
+  if (isSignedIn && !inAppGroup) {
+    return <Redirect href="/chats" />;
+  }
+
+  if (!isSignedIn && !inAuthGroup) {
+    return <Redirect href="/sign-in" />;
   }
 
   return <Slot />;
