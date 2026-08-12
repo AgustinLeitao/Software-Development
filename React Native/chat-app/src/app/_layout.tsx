@@ -1,7 +1,7 @@
 import '../../global.css';
 import { ClerkProvider, useAuth } from '@clerk/expo';
 import { tokenCache } from '@clerk/expo/token-cache';
-import { Redirect, Slot, useSegments } from 'expo-router';
+import { Stack } from 'expo-router';
 import { ActivityIndicator, View } from 'react-native';
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
@@ -12,7 +12,6 @@ if (!publishableKey) {
 
 function AuthGate() {
   const { isLoaded, isSignedIn } = useAuth();
-  const segments = useSegments();
 
   if (!isLoaded) {
     return (
@@ -22,18 +21,17 @@ function AuthGate() {
     );
   }
 
-  const inAuthGroup = segments[0] === '(auth)';
-  const inAppGroup = segments[0] === '(drawer)';
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Protected guard={isSignedIn}>
+        <Stack.Screen name="(drawer)" />
+      </Stack.Protected>
 
-  if (isSignedIn && !inAppGroup) {
-    return <Redirect href="/chats" />;
-  }
-
-  if (!isSignedIn && !inAuthGroup) {
-    return <Redirect href="/sign-in" />;
-  }
-
-  return <Slot />;
+      <Stack.Protected guard={!isSignedIn}>
+        <Stack.Screen name="(auth)" />
+      </Stack.Protected>
+    </Stack>
+  );
 }
 
 export default function RootLayout() {
