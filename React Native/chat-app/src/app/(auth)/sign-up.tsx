@@ -1,40 +1,32 @@
-import { useAuth } from '@clerk/expo'
 import { useHostedAuth } from '@clerk/expo/hosted-auth'
 import { makeRedirectUri } from 'expo-auth-session'
 import { Link } from 'expo-router'
-import { useFocusEffect } from '@react-navigation/native'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { ActivityIndicator, Button, StyleSheet, Text, View } from 'react-native'
 
 export default function SignUpScreen() {
-  const { isLoaded, isSignedIn } = useAuth()
   const { startHostedAuth } = useHostedAuth()
   const [isPending, setIsPending] = useState(false)
 
   const handleSignUp = async () => {
     try {
       setIsPending(true)
-      const redirectUrl = makeRedirectUri({ path: 'chats' })
+      const redirectUrl = makeRedirectUri()
 
-      await startHostedAuth({
+      const res = await startHostedAuth({
         mode: 'sign-up',
         redirectUrl,
       })
 
+      if (!res?.createdSessionId) {
+        setIsPending(false)
+      }
     } catch (error) {
       setIsPending(false)
     }
   }
 
-  useFocusEffect(
-    useCallback(() => {
-      if (!isSignedIn) {
-        setIsPending(false)
-      }
-    }, [isSignedIn])
-  )
-
-  if (isPending || !isLoaded) {
+  if (isPending) {
     return (
       <View style={styles.container}>
         <ActivityIndicator size="large" />
