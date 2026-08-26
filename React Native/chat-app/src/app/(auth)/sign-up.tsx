@@ -2,13 +2,18 @@ import { useHostedAuth } from '@clerk/expo/hosted-auth'
 import { makeRedirectUri } from 'expo-auth-session'
 import { Link } from 'expo-router'
 import { useState } from 'react'
-import { ActivityIndicator, Button, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Button, Platform, StyleSheet, Text, View } from 'react-native'
 
 export default function SignUpScreen() {
   const { startHostedAuth } = useHostedAuth()
   const [isPending, setIsPending] = useState(false)
 
   const handleSignUp = async () => {
+    if (Platform.OS === 'web') {
+      alert('Authentication is only supported on mobile devices.');
+      return;
+    }
+
     try {
       setIsPending(true)
       const redirectUrl = makeRedirectUri()
@@ -40,7 +45,7 @@ export default function SignUpScreen() {
       <View style={styles.card}>
         <Text style={styles.title}>Create account</Text>
         <Button title="Sign up" onPress={handleSignUp} />
-        <Link replace href="/(auth)/sign-in" style={styles.link}>
+        <Link replace href="/sign-in" style={styles.link}>
           Already have an account?
         </Link>
       </View>

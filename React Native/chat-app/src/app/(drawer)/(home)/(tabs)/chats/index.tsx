@@ -1,39 +1,51 @@
-import { useClerk } from '@clerk/expo'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { ChatListItem } from '@/components/ChatListItem';
+import { MOCK_CHATS } from '@/data/mockChats';
 
 export default function ChatsPage() {
-  const { signOut } = useClerk()
-
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Chat</Text>
-        <Button title="Log out" onPress={async () => await signOut()} />
-      </View>
+      <FlatList
+        data={MOCK_CHATS}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <ChatListItem
+            chat={item}
+            onPress={() => {
+            }}
+          />
+        )}
+        contentContainerStyle={styles.listContent}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>No chats available</Text>
+          </View>
+        }
+      />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: 'center',
+    width: '100%',
     maxWidth: 960,
-    marginHorizontal: 'auto',
-    gap: 16,
+    alignSelf: 'center',
+    backgroundColor: '#ffffff',
   },
-  title: {
-    fontSize: 64,
-    fontWeight: 'bold',
+  listContent: {
+    padding: 15,
+    gap: 15,
   },
-  subtitle: {
-    fontSize: 36,
-    color: '#38434D',
+  emptyContainer: {
+    padding: 32,
+    alignItems: 'center',
   },
-})
+  emptyText: {
+    color: '#6b7280',
+    fontSize: 16,
+  },
+});
