@@ -238,7 +238,7 @@ export const MOCK_CHATS: ChatMessage[] = [
   {
     id: '19',
     name: 'Ava Anderson',
-    avatarUrl: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150',
+    avatarUrl: '',
     lastMessage: {
       text: 'Thank you so much for your help yesterday!',
       timestamp: 'Aug 12',

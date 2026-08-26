@@ -12,13 +12,7 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({ chat, onPress }) => 
   const { name, avatarUrl, lastMessage, unreadCount, isOnline } = chat;
 
   return (
-    <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.container,
-        pressed && styles.pressed,
-      ]}
-    >
+    <Pressable onPress={onPress} style={styles.container}>
       <View style={styles.avatarContainer}>
         {avatarUrl ? (
           <Image source={{ uri: avatarUrl }} style={styles.avatar} />
@@ -79,9 +73,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     backgroundColor: '#ffffff',
-  },
-  pressed: {
-    backgroundColor: '#f3f4f6',
   },
   avatarContainer: {
     position: 'relative',
