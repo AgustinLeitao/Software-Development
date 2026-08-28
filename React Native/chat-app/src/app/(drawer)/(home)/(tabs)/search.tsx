@@ -54,7 +54,7 @@ export default function SearchPage() {
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <Text style={styles.emptyText}>
-                {searchQuery.trim() ? 'No results found' : 'Type a name or message to search'}
+                {searchQuery.trim() ? 'No results found' : 'Type a contact or message to search'}
               </Text>
             </View>
           }
@@ -75,16 +75,6 @@ const styles = StyleSheet.create({
     maxWidth: 960,
     alignSelf: 'center',
     backgroundColor: '#ffffff',
-  },
-  header: {
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 8,
-  },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#111827',
   },
   searchContainer: {
     flexDirection: 'row',
@@ -108,10 +98,12 @@ const styles = StyleSheet.create({
   listContent: {
     padding: 15,
     gap: 15,
+    flexGrow: 1
   },
   emptyContainer: {
-    padding: 32,
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   emptyText: {
     color: '#6b7280',

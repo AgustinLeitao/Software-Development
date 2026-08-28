@@ -8,10 +8,7 @@ export default function SettingsPage() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <View style={styles.main}>
-          <Text style={styles.title}>Settings</Text>
-          <Button title="Log out" onPress={async () => await signOut()} />
-        </View>
+        <Button title="Log out" onPress={async () => await signOut()} />
       </View>
     </SafeAreaView>
   );
@@ -24,21 +21,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    alignItems: 'center',
     padding: 24,
-  },
-  main: {
-    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    maxWidth: 960,
-    marginHorizontal: 'auto',
   },
   title: {
     fontSize: 64,
     fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 36,
-    color: '#38434D',
-  },
+  }
 });
