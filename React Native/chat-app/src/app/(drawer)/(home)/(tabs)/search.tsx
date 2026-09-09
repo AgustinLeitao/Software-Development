@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { ChatListItem } from '@/components/ChatListItem';
@@ -7,6 +8,7 @@ import { MOCK_CHATS } from '@/data/mockChats';
 
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   const filteredChats = searchQuery.trim()
     ? MOCK_CHATS.filter(
@@ -45,8 +47,7 @@ export default function SearchPage() {
           renderItem={({ item }) => (
             <ChatListItem
               chat={item}
-              onPress={() => {
-              }}
+              onPress={() => router.push({ pathname: '../../channel/[id]', params: { id: item.id } })}
             />
           )}
           contentContainerStyle={styles.listContent}

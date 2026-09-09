@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { ChatListItem } from '@/components/ChatListItem';
 import { MOCK_CHATS } from '@/data/mockChats';
 
 export default function ChatsPage() {
+  const router = useRouter();
+  const [chats, setChats] = useState(() => [...MOCK_CHATS]);
+
+  useFocusEffect(
+    useCallback(() => {
+      setChats([...MOCK_CHATS]);
+    }, [])
+  );
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={MOCK_CHATS}
+        data={chats}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <ChatListItem
             chat={item}
-            onPress={() => {
-            }}
+            onPress={() => router.push({ pathname: '../../channel/[id]', params: { id: item.id } })}
           />
         )}
         contentContainerStyle={styles.listContent}
@@ -49,3 +58,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
