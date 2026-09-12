@@ -14,20 +14,22 @@ export const ChannelHeader: React.FC<ChannelHeaderProps> = ({ chat, onBack }) =>
       <Pressable onPress={onBack} hitSlop={12}>
         <Ionicons name="arrow-back" size={24} color="#111827" />
       </Pressable>
-      {chat.avatarUrl ? (
-        <Image source={{ uri: chat.avatarUrl }} style={styles.avatar} />
-      ) : (
-        <View style={[styles.avatar, styles.initialsAvatar]}>
-          <Text style={styles.initialsText}>{chat.name.charAt(0).toUpperCase()}</Text>
-        </View>
-      )}
+      {
+        chat.avatarUrl ? (
+          <Image source={{ uri: chat.avatarUrl }} style={styles.avatar} />
+        ) : (
+          <View style={[styles.avatar, styles.initialsAvatar]}>
+            <Text style={styles.initialsText}>{chat.name.charAt(0).toUpperCase()}</Text>
+          </View>
+        )
+      }
       <View style={styles.headerDetails}>
         <Text style={styles.name} numberOfLines={1}>
           {chat.name}
         </Text>
         <Text style={styles.status}>{chat.isOnline ? 'online' : 'offline'}</Text>
       </View>
-    </View>
+    </View >
   );
 };
 
@@ -59,6 +61,7 @@ const styles = StyleSheet.create({
   },
   headerDetails: {
     flex: 1,
+    gap: 2
   },
   name: {
     color: '#111827',
@@ -68,7 +71,6 @@ const styles = StyleSheet.create({
   status: {
     color: '#6b7280',
     fontSize: 12,
-    marginTop: 2,
   },
 });
 

@@ -19,7 +19,6 @@ import { MessageInput } from '@/components/MessageInput';
 import { MOCK_CHATS } from '@/data/mockChats';
 import { MOCK_CONTACTS } from '@/data/mockContacts';
 import { MOCK_MESSAGES, MockMessage } from '@/data/mockMessages';
-import { ChatMessage } from '@/types/ChatMessage';
 
 function now(): string {
 	return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -84,7 +83,6 @@ export default function ChannelScreen() {
 		setText('');
 		setSelectedImage(null);
 
-		// Persist message in mock storage
 		if (chat) {
 			if (!MOCK_MESSAGES[chat.id]) {
 				MOCK_MESSAGES[chat.id] = [];
