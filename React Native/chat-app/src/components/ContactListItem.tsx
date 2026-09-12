@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import { Contact } from '@/types/Contact';
+import type { Contact } from '@/types/Contact';
 
 interface ContactListItemProps {
   contact: Contact;

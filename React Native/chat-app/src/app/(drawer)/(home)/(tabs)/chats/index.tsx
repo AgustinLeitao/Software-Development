@@ -22,7 +22,7 @@ export default function ChatsPage() {
         renderItem={({ item }) => (
           <ChatListItem
             chat={item}
-            onPress={() => router.push({ pathname: '../../channel/[id]', params: { id: item.id } })}
+            onPress={() => router.push({ pathname: '../../chat/[id]', params: { id: item.id } })}
           />
         )}
         contentContainerStyle={styles.listContent}

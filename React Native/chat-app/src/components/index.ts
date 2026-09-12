@@ -1,5 +1,5 @@
 export * from './ChatListItem';
 export * from './MessageBubble';
-export * from './ChannelHeader';
-export * from './MessageInput';
+export * from './ChatHeader';
+export * from './MessageComposer';
 export * from './ContactListItem';

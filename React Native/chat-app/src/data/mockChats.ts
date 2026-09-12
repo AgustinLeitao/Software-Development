@@ -1,6 +1,6 @@
-import { ChatMessage } from '@/types/ChatMessage';
+import type { ChatSummary } from '@/types/ChatSummary';
 
-export const MOCK_CHATS: ChatMessage[] = [
+export const MOCK_CHATS: ChatSummary[] = [
   {
     id: '1',
     name: 'Sarah Connor',

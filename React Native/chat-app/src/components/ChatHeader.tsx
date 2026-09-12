@@ -1,14 +1,14 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { ChatMessage } from '@/types/ChatMessage';
+import type { ChatSummary } from '@/types/ChatSummary';
 
-export interface ChannelHeaderProps {
-  chat: ChatMessage;
+export interface ChatHeaderProps {
+  chat: ChatSummary;
   onBack: () => void;
 }
 
-export const ChannelHeader: React.FC<ChannelHeaderProps> = ({ chat, onBack }) => {
+export const ChatHeader: React.FC<ChatHeaderProps> = ({ chat, onBack }) => {
   return (
     <View style={styles.header}>
       <Pressable onPress={onBack} hitSlop={12}>
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChannelHeader;
+export default ChatHeader;

@@ -1,5 +1,5 @@
 import { Redirect } from 'expo-router';
 
-export default function DrawerIndex() {
+export default function ChatsRedirect() {
   return <Redirect href="/chats" />;
 }

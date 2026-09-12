@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export interface MessageInputProps {
+export interface MessageComposerProps {
   text: string;
   onChangeText: (text: string) => void;
   selectedImage: string | null;
@@ -11,7 +11,7 @@ export interface MessageInputProps {
   onSend: () => void;
 }
 
-export const MessageInput: React.FC<MessageInputProps> = ({
+export const MessageComposer: React.FC<MessageComposerProps> = ({
   text,
   onChangeText,
   selectedImage,
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MessageInput;
+export default MessageComposer;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { MockMessage } from '@/data/mockMessages';
+import type { ChatMessage } from '@/types/ChatMessage';
 
 export interface MessageBubbleProps {
-  item: MockMessage;
+  item: ChatMessage;
 }
 
 export const MessageBubble: React.FC<MessageBubbleProps> = React.memo(({ item }) => {

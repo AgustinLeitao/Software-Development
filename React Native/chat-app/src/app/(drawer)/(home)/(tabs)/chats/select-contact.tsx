@@ -11,10 +11,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { ContactListItem } from '@/components/ContactListItem';
 import { MOCK_CHATS } from '@/data/mockChats';
 import { MOCK_CONTACTS } from '@/data/mockContacts';
-import { Contact } from '@/types/Contact';
-import { ChatMessage } from '@/types/ChatMessage';
+import type { Contact } from '@/types/Contact';
+import type { ChatSummary } from '@/types/ChatSummary';
 
-export default function NewChatScreen() {
+export default function SelectContactScreen() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -35,10 +35,10 @@ export default function NewChatScreen() {
   }, [searchQuery, sortedContacts]);
 
   const handleSelectContact = (contact: Contact) => {
-    // If chat doesn't exist in MOCK_CHATS yet, register it so channel/[id] and chats list know about it
+    
     const existing = MOCK_CHATS.find((c) => c.id === contact.id);
     if (!existing) {
-      const newChat: ChatMessage = {
+      const newChat: ChatSummary = {
         id: contact.id,
         name: contact.name,
         avatarUrl: contact.avatarUrl,
@@ -54,7 +54,7 @@ export default function NewChatScreen() {
     }
 
     router.push({
-      pathname: '/channel/[id]',
+      pathname: '/chat/[id]',
       params: { id: contact.id },
     });
   };

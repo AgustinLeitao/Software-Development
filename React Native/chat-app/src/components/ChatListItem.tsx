@@ -1,10 +1,10 @@
 import React from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { ChatMessage } from '@/types/ChatMessage';
+import type { ChatSummary } from '@/types/ChatSummary';
 
 interface ChatListItemProps {
-  chat: ChatMessage;
+  chat: ChatSummary;
   onPress?: () => void;
 }
 

@@ -14,7 +14,7 @@ export default function ChatsLayout() {
             title: 'Chats',
             headerRight: () => (
               <Pressable
-                onPress={() => router.push('/chats/new' as any)}
+                onPress={() => router.push('/chats/select-contact' as any)}
                 style={{ marginRight: 12 }}
                 hitSlop={8}
               >
@@ -24,7 +24,7 @@ export default function ChatsLayout() {
           }}
         />
         <Stack.Screen
-          name="new"
+          name="select-contact"
           options={{
             title: 'Select Contact',
             headerBackTitle: 'Chats',

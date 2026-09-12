@@ -1,13 +1,6 @@
-export interface MockMessage {
-  id: string;
-  text: string;
-  imageUri?: string;
-  timestamp: string;
-  isSentByMe: boolean;
-  isRead: boolean;
-}
+import type { ChatMessage } from '@/types/ChatMessage';
 
-export const MOCK_MESSAGES: Record<string, MockMessage[]> = {
+export const MOCK_MESSAGES: Record<string, ChatMessage[]> = {
   '1': [
     { id: '1-1', text: 'Hey! How are you doing?', timestamp: '10:30 AM', isSentByMe: false, isRead: true },
     { id: '1-2', text: 'I am doing well, thanks! Are we still meeting for coffee today?', timestamp: '10:35 AM', isSentByMe: false, isRead: true },
