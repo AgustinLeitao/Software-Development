@@ -6,7 +6,6 @@ export default function DrawerLayout() {
       <Drawer screenOptions={{ swipeEdgeWidth: 70, headerShown: false }}>
         <Drawer.Screen name="index" options={{ drawerItemStyle: { display: 'none' } }} />
         <Drawer.Screen name="(home)" options={{ title: 'Home' }} />
-        <Drawer.Screen name="about" options={{ title: 'About' }} />
       </Drawer>
     </>
   );

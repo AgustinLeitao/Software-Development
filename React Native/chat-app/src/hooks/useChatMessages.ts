@@ -1,4 +1,5 @@
 import * as ImagePicker from 'expo-image-picker';
+import * as Crypto from 'expo-crypto';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import type { ChatSummary } from '@/types/ChatSummary';
@@ -6,15 +7,12 @@ import { MOCK_CHATS } from '@/data/mockChats';
 import { MOCK_MESSAGES } from '@/data/mockMessages';
 import type { ChatMessage } from '@/types/ChatMessage';
 
-let localMessageSequence = 0;
-
 function now(): string {
 	return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
 function createLocalMessageId(): string {
-	localMessageSequence += 1;
-	return `local-${Date.now()}-${localMessageSequence}`;
+	return Crypto.randomUUID();
 }
 
 function getInitialMessages(chat?: ChatSummary): ChatMessage[] {
