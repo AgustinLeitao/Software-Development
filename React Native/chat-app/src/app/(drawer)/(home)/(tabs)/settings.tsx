@@ -8,7 +8,7 @@ export default function SettingsPage() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Button title="Log out" onPress={async () => await signOut()} />
+        <Button title="Log out" onPress={() => signOut()} />
       </View>
     </SafeAreaView>
   );

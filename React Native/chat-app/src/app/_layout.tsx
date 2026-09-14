@@ -1,4 +1,3 @@
-import '../../global.css';
 import { ClerkProvider, useAuth } from '@clerk/expo';
 import { tokenCache } from '@clerk/expo/token-cache';
 import { Stack } from 'expo-router';

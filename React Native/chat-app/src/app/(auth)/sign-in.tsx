@@ -21,6 +21,9 @@ export default function SignInScreen() {
       const res = await startHostedAuth({
         mode: 'sign-in',
         redirectUrl,
+        authSessionOptions: {
+          preferEphemeralSession: true,
+        },
       })
 
       if (!res?.createdSessionId) {
