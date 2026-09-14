@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import {
   FlatList,
   StyleSheet,
@@ -6,13 +8,12 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
+
 import { ContactListItem } from '@/components/ContactListItem';
 import { MOCK_CHATS } from '@/data/mockChats';
 import { MOCK_CONTACTS } from '@/data/mockContacts';
-import type { Contact } from '@/types/Contact';
 import type { ChatSummary } from '@/types/ChatSummary';
+import type { Contact } from '@/types/Contact';
 
 export default function SelectContactScreen() {
   const router = useRouter();

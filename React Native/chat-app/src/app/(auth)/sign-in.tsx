@@ -3,21 +3,20 @@ import { Link } from 'expo-router'
 import { useState } from 'react'
 import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 
+import { useAuthRequest } from '@/hooks/useAuthRequest'
+
 export default function SignInScreen() {
   const { signIn } = useSignIn()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [isPending, setIsPending] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+  const { errorMessage, executeAuthRequest, isPending } = useAuthRequest('Unable to sign in. Check your details and try again.')
 
   const handleSignIn = async () => {
     if (!email.trim() || !password) {
       return;
     }
 
-    try {
-      setIsPending(true)
-      setErrorMessage('')
+    await executeAuthRequest(async () => {
       const result = await signIn.password({
         identifier: email.trim(),
         password,
@@ -33,11 +32,7 @@ export default function SignInScreen() {
           throw finalizeResult.error
         }
       }
-    } catch (error) {
-      setErrorMessage(getErrorMessage(error))
-    } finally {
-      setIsPending(false)
-    }
+    })
   }
 
   return (
@@ -140,14 +135,3 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 })
-
-function getErrorMessage(error: unknown) {
-  if (typeof error === 'object' && error !== null && 'errors' in error) {
-    const errors = (error as { errors?: Array<{ longMessage?: string; message?: string }> }).errors
-    if (errors?.[0]) {
-      return errors[0].longMessage ?? errors[0].message ?? 'Unable to sign in.'
-    }
-  }
-
-  return 'Unable to sign in. Check your details and try again.'
-}

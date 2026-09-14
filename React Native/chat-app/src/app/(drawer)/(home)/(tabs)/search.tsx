@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useRouter } from 'expo-router';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { ChatListItem } from '@/components/ChatListItem';
 import { MOCK_CHATS } from '@/data/mockChats';
 

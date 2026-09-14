@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useRef } from 'react';
 import {
@@ -9,13 +10,13 @@ import {
 	Text,
 	View,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { ChatHeader } from '@/components/ChatHeader';
 import { MessageBubble } from '@/components/MessageBubble';
 import { MessageComposer } from '@/components/MessageComposer';
-import type { ChatMessage } from '@/types/ChatMessage';
 import { useChatMessages } from '@/hooks/useChatMessages';
+import type { ChatMessage } from '@/types/ChatMessage';
 import { getChatForId } from '@/utils/chatUtils';
 
 export default function ChatScreen() {

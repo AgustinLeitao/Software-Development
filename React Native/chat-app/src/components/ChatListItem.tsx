@@ -1,6 +1,7 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+
 import type { ChatSummary } from '@/types/ChatSummary';
 
 interface ChatListItemProps {

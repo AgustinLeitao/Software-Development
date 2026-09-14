@@ -1,11 +1,12 @@
-import * as ImagePicker from 'expo-image-picker';
 import * as Crypto from 'expo-crypto';
+import * as ImagePicker from 'expo-image-picker';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import type { ChatSummary } from '@/types/ChatSummary';
+
 import { MOCK_CHATS } from '@/data/mockChats';
 import { MOCK_MESSAGES } from '@/data/mockMessages';
 import type { ChatMessage } from '@/types/ChatMessage';
+import type { ChatSummary } from '@/types/ChatSummary';
 
 function now(): string {
 	return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });

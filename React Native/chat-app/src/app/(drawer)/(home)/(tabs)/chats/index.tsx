@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+
 import { ChatListItem } from '@/components/ChatListItem';
 import { MOCK_CHATS } from '@/data/mockChats';
 

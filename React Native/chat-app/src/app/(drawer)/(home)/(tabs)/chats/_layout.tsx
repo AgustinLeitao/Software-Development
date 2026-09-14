@@ -1,6 +1,6 @@
-import { Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useRouter } from 'expo-router';
+import { Pressable } from 'react-native';
 
 export default function ChatsLayout() {
   const router = useRouter();

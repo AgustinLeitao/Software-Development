@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Image, Pressable, StyleSheet, TextInput, View } from 'react-native';
 
 export interface MessageComposerProps {
   text: string;

@@ -3,23 +3,22 @@ import { Link } from 'expo-router'
 import { useState } from 'react'
 import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 
+import { useAuthRequest } from '@/hooks/useAuthRequest'
+
 export default function SignUpScreen() {
   const { signUp } = useSignUp()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [code, setCode] = useState('')
   const [needsVerification, setNeedsVerification] = useState(false)
-  const [isPending, setIsPending] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
+  const { errorMessage, executeAuthRequest, isPending } = useAuthRequest('Unable to create your account. Check your details and try again.')
 
   const handleSignUp = async () => {
     if (!email.trim() || !password) {
       return;
     }
 
-    try {
-      setIsPending(true)
-      setErrorMessage('')
+    await executeAuthRequest(async () => {
       const result = await signUp.password({
         emailAddress: email.trim(),
         password,
@@ -31,11 +30,7 @@ export default function SignUpScreen() {
 
       await signUp.verifications.sendEmailCode()
       setNeedsVerification(true)
-    } catch (error) {
-      setErrorMessage(getErrorMessage(error))
-    } finally {
-      setIsPending(false)
-    }
+    })
   }
 
   const handleVerify = async () => {
@@ -43,9 +38,7 @@ export default function SignUpScreen() {
       return
     }
 
-    try {
-      setIsPending(true)
-      setErrorMessage('')
+    await executeAuthRequest(async () => {
       const result = await signUp.verifications.verifyEmailCode({ code: code.trim() })
 
       if (result.error) {
@@ -58,11 +51,7 @@ export default function SignUpScreen() {
           throw finalizeResult.error
         }
       }
-    } catch (error) {
-      setErrorMessage(getErrorMessage(error))
-    } finally {
-      setIsPending(false)
-    }
+    })
   }
 
   return (
