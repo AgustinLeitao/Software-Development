@@ -1,14 +1,27 @@
 import { useClerk } from '@clerk/expo';
+import * as WebBrowser from 'expo-web-browser';
+import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SettingsPage() {
   const { signOut } = useClerk();
+  const [isSigningOut, setIsSigningOut] = useState(false);
+
+  const handleSignOut = async () => {
+    try {
+      setIsSigningOut(true);
+      await signOut();
+      await WebBrowser.dismissBrowser();
+    } finally {
+      setIsSigningOut(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Button title="Log out" onPress={() => signOut()} />
+        <Button title="Log out" onPress={handleSignOut} disabled={isSigningOut} />
       </View>
     </SafeAreaView>
   );
