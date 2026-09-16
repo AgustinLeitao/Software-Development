@@ -1,5 +1,5 @@
 import { useSignIn } from '@clerk/expo'
-import { Link } from 'expo-router'
+import { type Href, Link, useRouter } from 'expo-router'
 import { useState } from 'react'
 import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 
@@ -7,6 +7,7 @@ import { useAuthRequest } from '@/hooks/useAuthRequest'
 
 export default function SignInScreen() {
   const { signIn } = useSignIn()
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { errorMessage, executeAuthRequest, isPending } = useAuthRequest('Unable to sign in. Check your details and try again.')
@@ -18,7 +19,7 @@ export default function SignInScreen() {
 
     await executeAuthRequest(async () => {
       const result = await signIn.password({
-        identifier: email.trim(),
+        emailAddress: email.trim(),
         password,
       })
 
@@ -26,11 +27,18 @@ export default function SignInScreen() {
         throw result.error
       }
 
-      if (signIn.status === 'complete') {
-        const finalizeResult = await signIn.finalize()
-        if (finalizeResult.error) {
-          throw finalizeResult.error
-        }
+      if (signIn.status !== 'complete') {
+        throw new Error(`Sign-in did not complete. Clerk status: ${signIn.status}`)
+      }
+
+      const finalizeResult = await signIn.finalize({
+        navigate: ({ session, decorateUrl }) => {
+          if (session?.currentTask) return
+          router.replace(decorateUrl('/chats') as Href)
+        },
+      })
+      if (finalizeResult.error) {
+        throw finalizeResult.error
       }
     })
   }

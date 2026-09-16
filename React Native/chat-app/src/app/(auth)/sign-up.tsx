@@ -103,9 +103,11 @@ export default function SignUpScreen() {
         >
           {isPending ? <ActivityIndicator color="#ffffff" /> : <Text style={styles.buttonText}>{needsVerification ? 'Verify email' : 'Sign up'}</Text>}
         </Pressable>
-        <Link replace href="/sign-in" style={styles.link}>
-          Already have an account?
-        </Link>
+        {!needsVerification && (
+          <Link replace href="/sign-in" style={styles.link}>
+            Already have an account?
+          </Link>
+        )}
       </View>
     </View>
   )
