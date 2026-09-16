@@ -1,9 +1,8 @@
 import { useAuth } from '@clerk/expo';
-import { Slot } from 'expo-router';
 import { Redirect } from 'expo-router';
 import { ActivityIndicator, View } from 'react-native';
 
-export default function AuthLayout() {
+export default function AppIndex() {
   const { isLoaded, isSignedIn } = useAuth();
 
   if (!isLoaded) {
@@ -14,11 +13,5 @@ export default function AuthLayout() {
     );
   }
 
-  if (isSignedIn) {
-    return <Redirect href="/chats" />;
-  }
-
-  return (
-    <Slot />
-  );
+  return <Redirect href={isSignedIn ? '/chats' : '/sign-in'} />;
 }

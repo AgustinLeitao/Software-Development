@@ -174,14 +174,3 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 })
-
-function getErrorMessage(error: unknown) {
-  if (typeof error === 'object' && error !== null && 'errors' in error) {
-    const errors = (error as { errors?: Array<{ longMessage?: string; message?: string }> }).errors
-    if (errors?.[0]) {
-      return errors[0].longMessage ?? errors[0].message ?? 'Unable to create your account.'
-    }
-  }
-
-  return 'Unable to create your account. Check your details and try again.'
-}
