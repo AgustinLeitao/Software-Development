@@ -1,33 +1,11 @@
-import bcrypt from 'bcrypt';
 import postgres from 'postgres';
-import { invoices, customers, revenue, users } from '../lib/placeholder-data';
+import { invoices, customers, revenue } from '../lib/placeholder-data';
+import {
+  authorizationFailureResponse,
+  getAdminAuthorizationFailure,
+} from '@/app/lib/authz';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
-
-async function seedUsers(db: typeof sql) {
-  await db`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-  await db`
-    CREATE TABLE IF NOT EXISTS users (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      email TEXT NOT NULL UNIQUE,
-      password TEXT NOT NULL
-    );
-  `;
-
-  const insertedUsers = await Promise.all(
-    users.map(async (user) => {
-      const hashedPassword = await bcrypt.hash(user.password, 10);
-      return db`
-        INSERT INTO users (id, name, email, password)
-        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
-        ON CONFLICT (id) DO NOTHING;
-      `;
-    }),
-  );
-
-  return insertedUsers;
-}
 
 async function seedInvoices(db: typeof sql) {
   await db`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
@@ -102,9 +80,13 @@ async function seedRevenue(db: typeof sql) {
 }
 
 export async function GET() {
+  const authorizationFailure = await getAdminAuthorizationFailure();
+  if (authorizationFailure) {
+    return authorizationFailureResponse(authorizationFailure);
+  }
+
   try {
     await sql.begin(async (db) => {
-      await seedUsers(db);
       await seedCustomers(db);
       await seedInvoices(db);
       await seedRevenue(db);

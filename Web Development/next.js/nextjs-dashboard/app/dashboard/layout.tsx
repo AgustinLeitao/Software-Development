@@ -1,6 +1,16 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
- 
-export default function Layout({ children }: { children: React.ReactNode }) {
+import { getAdminAuthorizationFailure } from '@/app/lib/authz';
+import { redirect } from 'next/navigation';
+
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  const authorizationFailure = await getAdminAuthorizationFailure();
+
+  if (authorizationFailure) {
+    redirect(
+      authorizationFailure.status === 401 ? '/login' : '/unauthorized',
+    );
+  }
+
   return (
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
       <div className="w-full flex-none md:w-64">
