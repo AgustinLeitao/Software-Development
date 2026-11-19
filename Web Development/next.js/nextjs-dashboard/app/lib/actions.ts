@@ -48,6 +48,7 @@ export async function signInWithMicrosoftEntra() {
 }
 
 export async function createInvoice(prevState: State, formData: FormData) {
+  void prevState;
   await requireAdmin();
 
   const validatedFields = CreateInvoice.safeParse({
@@ -90,6 +91,7 @@ export async function updateInvoice(
   prevState: State,
   formData: FormData,
 ) {
+  void prevState;
   await requireAdmin();
 
   const validatedFields = UpdateInvoice.safeParse({
@@ -115,6 +117,7 @@ export async function updateInvoice(
       WHERE id = ${id}
     `;
   } catch (error) {
+    console.error(error);
     return { message: 'Database Error: Failed to Update Invoice.' };
   }
 
